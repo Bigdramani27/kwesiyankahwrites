@@ -9,10 +9,10 @@ function add_to_cart_controller($userID, $productID, $quantity)
 }
 
 //selecting user cart
-function select_user_cart_controller($user_id)
+function select_user_cart_controller($userID)
 {
     $cart = new Cart();
-    return $cart->select_user_cart($user_id);
+    return $cart->select_user_cart($userID);
 }
 
 //count user cart
@@ -51,10 +51,10 @@ function select_cart_inner_join_item_controller($user_id)
 }
 
 //delete from cart for a specific item for a user
-function delete_one_item_from_cart_for_user_controller($cart_id, $user_id)
+function delete_one_item_from_cart_for_user_controller($cartID, $userID)
 {
     $cart = new Cart();
-    return $cart->delete_one_item_from_cart_for_user($cart_id, $user_id);
+    return $cart->delete_one_item_from_cart_for_user($cartID, $userID);
 }
 
 
@@ -72,10 +72,10 @@ function update_quantity_cart_controller($cart_id, $user_id, $quantity)
     return $cart->update_quantity_cart($cart_id, $user_id, $quantity);
 }
 // calculate the total amount for items in the cart
-function total_amount_controller($user_id)
+function total_amount_controller($userID)
 {
     $cart = new Cart();
-    return $cart->total_amount($user_id);
+    return $cart->total_amount($userID);
 }
 
 // add to wishlist

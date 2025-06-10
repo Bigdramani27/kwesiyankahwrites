@@ -64,13 +64,13 @@ class Product extends Connection
 	//selecting 3 product
 	function select_3_products()
 	{
-		return $this->fetch("select * from product limit 3");
+		return $this->fetch("select * from product ORDER BY productID DESC limit 3 ");
 	}
 
 	// random 5 products for product detail page
 	function select_5_products($category)
 	{
-		return $this->fetch("SELECT * FROM product where productCategory='$category' ORDER BY RAND() LIMIT 5");
+		return $this->fetch("SELECT * FROM product where productCategory='$category' ORDER BY RAND() LIMIT 5 ");
 	}
 
 	//selecting all products based on category

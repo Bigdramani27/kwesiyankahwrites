@@ -6,6 +6,7 @@ require('../controllers/cart_controller.php');
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $count = count_wishlist_for_user_controller($customer_id);
 $cart =count_user_cart_controller($customer_id);
+$total = total_amount_controller($customer_id);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -395,7 +396,7 @@ $cart =count_user_cart_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -517,7 +518,7 @@ $cart =count_user_cart_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../cart/index.php"
+                                      href="../../../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -716,7 +717,7 @@ $cart =count_user_cart_controller($customer_id);
                             <a href="../product/index.php?SKU=<?php echo $product['productID'] ?>"><?php echo $product['productName'] ?></a>
                           </div>
                           <div class="woosw-item--price">
-                            <span class="woocommerce-Price-amount amount">₵ <?php echo $product['productPrice'] ?></span>
+                            <span class="woocommerce-Price-amount amount">₵ <?php echo number_format($product['productPrice'], 2) ?></span>
                           </div>
                           <div class="woosw-item--time"><?php echo $product['productAuthor'] ?></div>
                         </td>
@@ -726,6 +727,8 @@ $cart =count_user_cart_controller($customer_id);
                             <p
                               class="product woocommerce add_to_cart_inline">
                             <form id="cart-<?php echo $product['productID'] ?>">
+                               <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
+                               <input type="hidden" name="quantity" value="1">
                               <button
                                 type="submit"
                                 class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</button>
@@ -1394,7 +1397,7 @@ $cart =count_user_cart_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
-  <div class="site-header-cart-side">
+ <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>
@@ -1403,41 +1406,46 @@ $cart =count_user_cart_controller($customer_id);
       <div class="widget_shopping_cart_content">
         <div class="woocommerce-mini-cart-scroll">
           <ul class="woocommerce-mini-cart cart_list product_list_widget">
-            <li class="woocommerce-mini-cart-item mini_cart_item">
-              <a
-                href=""
-                class="remove remove_from_cart_button"
-                aria-label="Remove this item"
-                data-product_id="99"
-                data-cart_item_key="ac627ab1ccbdb62ec96e702f07f6425b"
-                data-product_sku="B87309287">×</a>
-              <a href=""><img
-                  width="600"
-                  height="840"
-                  src="../wp-content/uploads/images/29.jpg"
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  alt=""
-                  decoding="async" />Treachery: Alpha Colony Book 8</a>
-              <dl class="variation">
-                <dt class="variation-Vendor">Vendor:</dt>
-                <dd class="variation-Vendor">
-                  <p>Gregstore</p>
-                </dd>
-              </dl>
-              <span class="quantity">1 ×
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span></span>
-            </li>
+            <?php $carts = select_user_cart_controller($customer_id);
+            foreach ($carts as $all) {
+            ?>
+              <li class="woocommerce-mini-cart-item mini_cart_item">
+                <a
+                  href="../action/delete_from_cart.php?cart=<?php echo $all['cartID'] ?>"
+                  class="remove remove_from_cart_button"
+                  data-product_sku="B87309287">×</a>
+                <a href="../product/index.php?SKU=<?php echo $all['productID'] ?>"><img
+                    style="height: 85px;"
+                    src="../wp-content/uploads/books/<?php echo $all['productImage'] ?>"
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                    alt=""
+                    decoding="async" /><?php echo $all['productName'] ?></a>
+                <dl class="variation">
+                  <dt class="variation-Vendor">Category:</dt>
+                  <dd class="variation-Vendor">
+                    <p><?php echo $all['productCategory'] ?></p>
+                  </dd>
+                </dl>
+                <span class="quantity"><?php echo $all['quantity'] ?> ×
+                  <span class="woocommerce-Price-amount amount" style="color:black"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'], 2) ?></span></span>
+              </li>
+            <?php }
+            if (empty($carts)) { ?>
+              <p class="woocommerce-mini-cart__empty-message">No books in the cart.</p>
+            <?php   }
+            ?>
           </ul>
         </div>
+        <?php if (!empty($carts)) { ?>
+          <p class="woocommerce-mini-cart__total total">
+            <strong>Subtotal:</strong>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵ <?php echo $total['Amount'] ?></span></span>
+          </p>
 
-        <p class="woocommerce-mini-cart__total total">
-          <strong>Subtotal:</strong>
-          <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span>
-        </p>
-
-        <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
-        </p>
+          <p class="woocommerce-mini-cart__buttons buttons">
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          </p>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -1497,6 +1505,7 @@ $cart =count_user_cart_controller($customer_id);
     id="rs-plugin-settings-css"
     href="../wp-content/plugins/revslider/sr6/assets/css/rs6efd5.css?ver=6.7.18"
     media="all" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script>
     $(document).ready(function() {
@@ -1504,12 +1513,14 @@ $cart =count_user_cart_controller($customer_id);
         event.preventDefault();
         $.ajax({
           type: 'POST',
-          url: '../action/add_cart.php',
+          url: '../action/add_to_cart.php',
           dataType: 'json',
           data: $(this).serialize(),
           success: function(response) {
-            if (response.success) {
-              Swal.fire('Success!', response.message, 'success');
+             if (response.success) {
+              Swal.fire('Success!', response.message, 'success').then(() => {
+                location.reload();
+              });
             }
           },
           error: function() {

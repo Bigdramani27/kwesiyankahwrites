@@ -501,7 +501,7 @@
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -606,7 +606,7 @@
                                 <div class="site-header-cart menu">
                                   <a
                                     class="cart-contents"
-                                    href="cart/index.php"
+                                    href="../../cart/index.php"
                                     title="View your shopping cart">
                                     <span class="count">3</span>
                                     <span
@@ -1884,7 +1884,7 @@
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>

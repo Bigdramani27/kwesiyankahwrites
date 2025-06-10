@@ -8,7 +8,8 @@ $productID = $_GET['SKU'];
 $product = select_one_product_controller($productID);
 $category = $product['productCategory'];
 $count = count_wishlist_for_user_controller($customer_id);
-$cart =count_user_cart_controller($customer_id);
+$cart = count_user_cart_controller($customer_id);
+$total = total_amount_controller($customer_id);
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -520,7 +521,7 @@ $cart =count_user_cart_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -626,9 +627,9 @@ $cart =count_user_cart_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="header-wishlist"
-                                      href="wishlist/index.php">
+                                      href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -639,13 +640,13 @@ $cart =count_user_cart_controller($customer_id);
                                   <?php } ?>
                                 </div>
 
-                                 <div class="site-header-cart menu">
+                                <div class="site-header-cart menu">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../cart/index.php"
+                                      href="../../../cart/index.php"
                                       title="View your shopping cart">
-                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                                      <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -849,7 +850,7 @@ $cart =count_user_cart_controller($customer_id);
                     <span class="sku_wrapper">SKU: <span class="sku"> <?php echo $product['productID'] ?></span></span>
                   </div>
                   <p class="price">
-                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵</span> <?php echo $product['productPrice'] ?></span>
+                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵</span> <?php echo number_format($product['productPrice'], 2) ?></span>
                   </p>
                   <div class="woocommerce-product-details__short-description">
                     <p class="text-container">
@@ -858,12 +859,11 @@ $cart =count_user_cart_controller($customer_id);
                   </div>
 
                   <form
-                    class="cart" id="add_cartw">
+                    class="cart" id="add_cart">
                     <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
                     <div class="quantity_wrap">
                       <label
-                        class="quantity_label"
-                      >Quantity</label>
+                        class="quantity_label">Quantity</label>
                       <div class="quantity">
                         <input
                           type="number"
@@ -1571,7 +1571,9 @@ $cart =count_user_cart_controller($customer_id);
           data: $(this).serialize(),
           success: function(response) {
             if (response.success) {
-              Swal.fire('Success!', response.message, 'success');
+              Swal.fire('Success!', response.message, 'success').then((result) => {
+                location.reload();
+              });
             }
           },
           error: function() {
@@ -1746,41 +1748,46 @@ $cart =count_user_cart_controller($customer_id);
       <div class="widget_shopping_cart_content">
         <div class="woocommerce-mini-cart-scroll">
           <ul class="woocommerce-mini-cart cart_list product_list_widget">
-            <li class="woocommerce-mini-cart-item mini_cart_item">
-              <a
-                href=""
-                class="remove remove_from_cart_button"
-                aria-label="Remove this item"
-                data-product_id="99"
-                data-cart_item_key="ac627ab1ccbdb62ec96e702f07f6425b"
-                data-product_sku="B87309287">×</a>
-              <a href=""><img
-                  width="600"
-                  height="840"
-                  src="wp-content/uploads/images/29.jpg"
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  alt=""
-                  decoding="async" />Treachery: Alpha Colony Book 8</a>
-              <dl class="variation">
-                <dt class="variation-Vendor">Vendor:</dt>
-                <dd class="variation-Vendor">
-                  <p>Gregstore</p>
-                </dd>
-              </dl>
-              <span class="quantity">1 ×
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span></span>
-            </li>
+            <?php $carts = select_user_cart_controller($customer_id);
+            foreach ($carts as $all) {
+            ?>
+              <li class="woocommerce-mini-cart-item mini_cart_item">
+                <a
+                  href="../action/delete_from_cart.php?cart=<?php echo $all['cartID'] ?>"
+                  class="remove remove_from_cart_button"
+                  data-product_sku="B87309287">×</a>
+                <a href="../product/index.php?SKU=<?php echo $all['productID'] ?>"><img
+                    style="height: 85px;"
+                    src="../wp-content/uploads/books/<?php echo $all['productImage'] ?>"
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                    alt=""
+                    decoding="async" /><?php echo $all['productName'] ?></a>
+                <dl class="variation">
+                  <dt class="variation-Vendor">Category:</dt>
+                  <dd class="variation-Vendor">
+                    <p><?php echo $all['productCategory'] ?></p>
+                  </dd>
+                </dl>
+                <span class="quantity"><?php echo $all['quantity'] ?> ×
+                  <span class="woocommerce-Price-amount amount" style="color:black"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'], 2) ?></span></span>
+              </li>
+            <?php }
+            if (empty($carts)) { ?>
+              <p class="woocommerce-mini-cart__empty-message">No books in the cart.</p>
+            <?php   }
+            ?>
           </ul>
         </div>
+        <?php if (!empty($carts)) { ?>
+          <p class="woocommerce-mini-cart__total total">
+            <strong>Subtotal:</strong>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵ <?php echo $total['Amount'] ?></span></span>
+          </p>
 
-        <p class="woocommerce-mini-cart__total total">
-          <strong>Subtotal:</strong>
-          <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span>
-        </p>
-
-        <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
-        </p>
+          <p class="woocommerce-mini-cart__buttons buttons">
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          </p>
+        <?php } ?>
       </div>
     </div>
   </div>

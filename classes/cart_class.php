@@ -11,9 +11,9 @@ class Cart extends Connection
     }
 
     //selecting user cart
-    function select_user_cart($user_id)
+    function select_user_cart($userID)
     {
-        return $this->fetch("select * from cart where user_id = '$user_id'");
+        return $this->fetch("select * from cart c inner join product p on p.productID = c.productID where c.userID = '$userID'");
     }
 
     //count user cart
@@ -47,27 +47,27 @@ class Cart extends Connection
     }
 
     //delete from cart for a specific item for a user
-    function delete_one_item_from_cart_for_user($cart_id, $user_id)
+    function delete_one_item_from_cart_for_user($cartID, $userID)
     {
-        return $this->query("delete from cart where cart_id = '$cart_id' and user_id = '$user_id'");
+        return $this->query("delete from cart where cartID = '$cartID' and userID = '$userID'");
     }
 
     //delete from cart for all items for a user
     function delete_all_item_from_cart_for_user($user_id)
     {
-        return $this->query("delete from cart where user_id = '$user_id'");
+        return $this->query("delete from cart where userID = '$user_id'");
     }
 
     // updating cart quantity for one user
-    function update_quantity_cart($cart_id, $user_id, $quantity)
+    function update_quantity_cart($cartID, $userID, $quantity)
     {
-        return $this->query("update cart set quantity = '$quantity' where cart_id = '$cart_id' and user_id = '$user_id'");
+        return $this->query("update cart set quantity = '$quantity' where cartID = '$cartID' and userID = '$userID'");
     }
 
     // calculate the total amount for items in the cart
-    function total_amount($user_id)
+    function total_amount($userID)
     {
-        return $this->fetchOne("SELECT round(SUM(merchandise.item_price *cart.quantity),2) as Amount  FROM cart join merchandise on (merchandise.item_id = cart.item_id) where cart.user_id = '$user_id'");
+        return $this->fetchOne("SELECT round(SUM(product.productPrice *cart.quantity),2) as Amount  FROM cart join product on (product.productID = cart.productID) where cart.userID = '$userID'");
     }
 
     //inserting to wishlist

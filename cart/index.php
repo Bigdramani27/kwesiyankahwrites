@@ -6,6 +6,7 @@ require('../controllers/cart_controller.php');
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $count = count_wishlist_for_user_controller($customer_id);
 $cart = count_user_cart_controller($customer_id);
+$total = total_amount_controller($customer_id);
 ?>
 <html lang="en-US">
 
@@ -15,7 +16,7 @@ $cart = count_user_cart_controller($customer_id);
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <title>Cart &#8211; Bookory</title>
+  <title>Prof Kwesi Yankah Book Store</title>
   <link
     rel="stylesheet"
     id="dashicons-css"
@@ -187,11 +188,6 @@ $cart = count_user_cart_controller($customer_id);
     media="all" />
   <link
     rel="stylesheet"
-    id="dokan-modal-css"
-    href="../wp-content/plugins/dokan-lite/assets/vendors/izimodal/iziModal.mina71e.css?ver=1732076614"
-    media="all" />
-  <link
-    rel="stylesheet"
     id="bookory-elementor-css"
     href="../wp-content/themes/bookory/assets/css/base/elementor3601.css?ver=2.2.0"
     media="all" />
@@ -229,11 +225,6 @@ $cart = count_user_cart_controller($customer_id);
     rel="stylesheet"
     id="tooltipster-css"
     href="../wp-content/themes/bookory/assets/css/libs/tooltipster.bundle.min3601.css?ver=2.2.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="bookory-child-style-css"
-    href="../wp-content/themes/demo-child/style8a54.css?ver=1.0.0"
     media="all" />
   <link
     rel="stylesheet"
@@ -394,7 +385,7 @@ $cart = count_user_cart_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -477,7 +468,7 @@ $cart = count_user_cart_controller($customer_id);
                           <div class="elementor-widget-container">
                             <div class="elementor-header-group-wrapper">
                               <div class="header-group-action">
-                               <?php if ($customer_id != 0) {  ?>
+                                <?php if ($customer_id != 0) {  ?>
                                   <div class="site-header-wishlist">
                                     <div class="site-header-account">
                                       <a href="">
@@ -496,16 +487,16 @@ $cart = count_user_cart_controller($customer_id);
                                   </div>
                                 <?php   } ?>
 
-                                  <div class="site-header-wishlist">
+                                <div class="site-header-wishlist">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="header-wishlist"
-                                      href="wishlist/index.php">
+                                      href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
-                                         <a
+                                    <a
                                       class="header-wishlist"
                                       href="../my-account/index.php">
                                       <i class="bookory-icon-heart-1"></i>
@@ -513,13 +504,13 @@ $cart = count_user_cart_controller($customer_id);
                                   <?php } ?>
                                 </div>
 
-                                   <div class="site-header-cart menu">
+                                <div class="site-header-cart menu">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
                                       href="../cart/index.php"
                                       title="View your shopping cart">
-                                   <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                                      <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -573,7 +564,7 @@ $cart = count_user_cart_controller($customer_id);
                             <li
                               id="menu-item-2842"
                               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home ">
-                              <a href="index.php"><span class="menu-title">Shop</span></a>
+                              <a href="../shop/index.php"><span class="menu-title">Shop</span></a>
                             </li>
                             <li
                               id="menu-item-1191"
@@ -684,364 +675,160 @@ $cart = count_user_cart_controller($customer_id);
         <div class="woocommerce"></div>
         <div id="primary">
           <main id="main" class="site-main" role="main">
-            <article
-              id="post-8"
-              class="post-8 page type-page status-publish hentry">
-              <div class="entry-content">
-                <div class="woocommerce">
-                  <div class="woocommerce-notices-wrapper"></div>
-                  <form
-                    class="woocommerce-cart-form"
-                    method="post">
-                    <table
-                      class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
-                      cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th class="product-remove">
-                            <span class="screen-reader-text">Remove item</span>
-                          </th>
-                          <th class="product-thumbnail">
-                            <span class="screen-reader-text">Thumbnail image</span>
-                          </th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
-                          <th class="product-subtotal">Subtotal</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr
-                          class="woocommerce-cart-form__cart-item cart_item">
-                          <td class="product-remove">
-                            <a
-                              href=""
-                              class="remove"
-                              aria-label="Remove The Book of Five Rings from cart"
-                              data-product_id="77"
-                              data-product_sku="01032536">×</a>
-                          </td>
-
-                          <td class="product-thumbnail">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-book-of-five-rings/#woosq-77"><img
-                                fetchpriority="high"
-                                decoding="async"
-                                width="600"
-                                height="840"
-                                src="../wp-content/uploads/images/22.jpg"
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                alt="" /></a>
-                          </td>
-
-                          <td class="product-name" data-title="Product">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-book-of-five-rings/#woosq-77">The Book of Five Rings</a>
-                            <dl class="variation">
-                              <dt class="variation-Vendor">Vendor:</dt>
-                              <dd class="variation-Vendor">
-                                <p>Arlene</p>
-                              </dd>
-                            </dl>
-                          </td>
-
-                          <td class="product-price" data-title="Price">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>439.83</bdi></span>
-                          </td>
-
-                          <td class="product-quantity" data-title="Quantity">
-                            <div class="quantity_wrap">
-                              <label
-                                class="quantity_label"
-                                for="quantity_6836590a7d6a3">Quantity</label>
-                              <div class="quantity buttons_added">
-                                <button type="button" class="minus">
-                                  <i class="bookory-icon-minus"></i>
-                                </button>
-                                <input
-                                  type="number"
-                                  id="quantity_6836590a7d6a3"
-                                  class="input-text qty text"
-                                  step="1"
-                                  min="0"
-                                  max="999"
-                                  name="cart[28dd2c7955ce926456240b2ff0100bde][qty]"
-                                  value="1"
-                                  title="Qty"
-                                  placeholder=""
-                                  inputmode="numeric" /><button type="button" class="plus">
-                                  <i class="bookory-icon-plus"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="product-subtotal" data-title="Subtotal">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>439.83</bdi></span>
-                          </td>
-                        </tr>
-                        <tr
-                          class="woocommerce-cart-form__cart-item cart_item">
-                          <td class="product-remove">
-                            <a
-                              href="htta"
-                              class="remove"
-                              aria-label="Remove The Silent Sisters 3 from cart"
-                              data-product_id="69"
-                              data-product_sku="63285161">×</a>
-                          </td>
-
-                          <td class="product-thumbnail">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-silent-sisters-3/#woosq-69"><img
-                                decoding="async"
-                                width="600"
-                                height="840"
-                                src="../wp-content/uploads/images/22.jpg"
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                alt="" /></a>
-                          </td>
-
-                          <td class="product-name" data-title="Product">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-silent-sisters-3/#woosq-69">The Silent Sisters 3</a>
-                            <dl class="variation">
-                              <dt class="variation-Vendor">Vendor:</dt>
-                              <dd class="variation-Vendor">
-                                <p>Library</p>
-                              </dd>
-                            </dl>
-                          </td>
-
-                          <td class="product-price" data-title="Price">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>606.79</bdi></span>
-                          </td>
-
-                          <td class="product-quantity" data-title="Quantity">
-                            <div class="quantity_wrap">
-                              <label
-                                class="quantity_label"
-                                for="quantity_6836590a8202d">Quantity</label>
-                              <div class="quantity buttons_added">
-                                <button type="button" class="minus">
-                                  <i class="bookory-icon-minus"></i>
-                                </button>
-                                <input
-                                  type="number"
-                                  id="quantity_6836590a8202d"
-                                  class="input-text qty text"
-                                  step="1"
-                                  min="0"
-                                  max="999"
-                                  name="cart[14bfa6bb14875e45bba028a21ed38046][qty]"
-                                  value="1"
-                                  title="Qty"
-                                  placeholder=""
-                                  inputmode="numeric" /><button type="button" class="plus">
-                                  <i class="bookory-icon-plus"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="product-subtotal" data-title="Subtotal">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>606.79</bdi></span>
-                          </td>
-                        </tr>
-                        <tr
-                          class="woocommerce-cart-form__cart-item cart_item">
-                          <td class="product-remove">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory../cart/index.php?remove_item=d2ddea18f00665ce8623e36bd4e3c7c5&amp;_wpnonce=f6c505824a"
-                              class="remove"
-                              aria-label="Remove Annie Leibovitz: Wonderland from cart"
-                              data-product_id="73"
-                              data-product_sku="37027650">×</a>
-                          </td>
-
-                          <td class="product-thumbnail">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/annie-leibovitz-wonderland-2/#woosq-73"><img
-                                decoding="async"
-                                width="600"
-                                height="840"
-                                src="../wp-content/uploads/images/22.jpg"
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                alt="" /></a>
-                          </td>
-
-                          <td class="product-name" data-title="Product">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/annie-leibovitz-wonderland-2/#woosq-73">Annie Leibovitz: Wonderland</a>
-                            <dl class="variation">
-                              <dt class="variation-Vendor">Vendor:</dt>
-                              <dd class="variation-Vendor">
-                                <p>Book House</p>
-                              </dd>
-                            </dl>
-                          </td>
-
-                          <td class="product-price" data-title="Price">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>35.19</bdi></span>
-                          </td>
-
-                          <td class="product-quantity" data-title="Quantity">
-                            <div class="quantity_wrap">
-                              <label
-                                class="quantity_label"
-                                for="quantity_6836590a85858">Quantity</label>
-                              <div class="quantity buttons_added">
-                                <button type="button" class="minus">
-                                  <i class="bookory-icon-minus"></i>
-                                </button>
-                                <input
-                                  type="number"
-                                  id="quantity_6836590a85858"
-                                  class="input-text qty text"
-                                  step="1"
-                                  min="0"
-                                  max="999"
-                                  name="cart[d2ddea18f00665ce8623e36bd4e3c7c5][qty]"
-                                  value="1"
-                                  title="Qty"
-                                  placeholder=""
-                                  inputmode="numeric" /><button type="button" class="plus">
-                                  <i class="bookory-icon-plus"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="product-subtotal" data-title="Subtotal">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>35.19</bdi></span>
-                          </td>
-                        </tr>
-
-                        <tr
-                          class="woocommerce-cart-form__cart-item cart_item">
-                          <td class="product-remove">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory../cart/index.php?remove_item=093f65e080a295f8076b1c5722a46aa2&amp;_wpnonce=f6c505824a"
-                              class="remove"
-                              aria-label="Remove The Good Egg from cart"
-                              data-product_id="59"
-                              data-product_sku="48232333">×</a>
-                          </td>
-
-                          <td class="product-thumbnail">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-good-egg/#woosq-59"><img
-                                loading="lazy"
-                                decoding="async"
-                                width="600"
-                                height="840"
-                                src="../wp-content/uploads/images/22.jpg"
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                alt="" /></a>
-                          </td>
-
-                          <td class="product-name" data-title="Product">
-                            <a
-                              href="https://demo2.pavothemes.com/bookory/product/the-good-egg/#woosq-59">The Good Egg</a>
-                            <dl class="variation">
-                              <dt class="variation-Vendor">Vendor:</dt>
-                              <dd class="variation-Vendor">
-                                <p>Barone LLC.</p>
-                              </dd>
-                            </dl>
-                            <p class="backorder_notification">
-                              Available on backorder
-                            </p>
-                          </td>
-
-                          <td class="product-price" data-title="Price">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>289.38</bdi></span>
-                          </td>
-
-                          <td class="product-quantity" data-title="Quantity">
-                            <div class="quantity_wrap">
-                              <label
-                                class="quantity_label"
-                                for="quantity_6836590a8c1e2">Quantity</label>
-                              <div class="quantity buttons_added">
-                                <button type="button" class="minus">
-                                  <i class="bookory-icon-minus"></i>
-                                </button>
-                                <input
-                                  type="number"
-                                  id="quantity_6836590a8c1e2"
-                                  class="input-text qty text"
-                                  step="1"
-                                  min="0"
-                                  max="999"
-                                  name="cart[093f65e080a295f8076b1c5722a46aa2][qty]"
-                                  value="6"
-                                  title="Qty"
-                                  placeholder=""
-                                  inputmode="numeric" /><button type="button" class="plus">
-                                  <i class="bookory-icon-plus"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="product-subtotal" data-title="Subtotal">
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">$</span>1,736.28</bdi></span>
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                    </table>
-                  </form>
-
-                  <div class="cart-collaterals">
-                    <div class="cart_totals">
-                      <h2>Cart totals</h2>
-
+            <?php if (!empty($cart)) { ?>
+              <article
+                id="post-8"
+                class="post-8 page type-page status-publish hentry">
+                <div class="entry-content">
+                  <div class="woocommerce">
+                    <div class="woocommerce-notices-wrapper"></div>
+                    <form
+                      class="woocommerce-cart-form"
+                      method="post">
                       <table
-                        cellspacing="0"
-                        class="shop_table shop_table_responsive">
+                        class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
+                        cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th class="product-remove">
+                              <span class="screen-reader-text">Remove item</span>
+                            </th>
+                            <th class="product-thumbnail">
+                              <span class="screen-reader-text">Thumbnail image</span>
+                            </th>
+                            <th class="product-name">Product</th>
+                            <th class="product-price">Price</th>
+                            <th class="product-quantity">Quantity</th>
+                            <th class="product-subtotal">Subtotal</th>
+                          </tr>
+                        </thead>
                         <tbody>
-                          <tr class="cart-subtotal">
-                            <th>Subtotal</th>
-                            <td data-title="Subtotal">
-                              <span class="woocommerce-Price-amount amount"><bdi><span
-                                    class="woocommerce-Price-currencySymbol">$</span>3,019.09</bdi></span>
-                            </td>
-                          </tr>
+                          <?php $products = select_user_cart_controller($customer_id);
+                          foreach ($products as $product) {
+                          ?>
+                            <tr
+                              class="woocommerce-cart-form__cart-item cart_item">
+                              <td class="product-remove">
+                                <a
+                                  href="../action/delete_from_cart.php?cart=<?php echo $product['cartID'] ?>"
+                                  class="remove">×</a>
+                              </td>
 
-                          <tr class="order-total">
-                            <th>Total</th>
-                            <td data-title="Total">
-                              <strong><span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>3,019.09</bdi></span></strong>
-                            </td>
-                          </tr>
+                              <td class="product-thumbnail">
+                                <a
+                                  href="../product/index.php?SKU=<?php echo $product['productID'] ?>"><img style="height: 120px;"
+                                    src="../wp-content/uploads/books/<?php echo $product['productImage']?>"
+                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                    alt="" /></a>
+                              </td>
+
+                              <td class="product-name" data-title="Product">
+                                <a
+                                  href="../product/index.php?SKU=<?php echo $product['productID'] ?>"><?php echo $product['productName'] ?></a>
+                                <dl class="variation">
+                                  <dt class="variation-Vendor">Category:</dt>
+                                  <dd class="variation-Vendor">
+                                    <p><?php echo $product['productCategory'] ?></p>
+                                  </dd>
+                                </dl>
+                              </td>
+
+                              <td class="product-price" data-title="Price">
+                                <span class="woocommerce-Price-amount amount"><span
+                                    class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($product['productPrice'], 2) ?></span>
+                              </td>
+
+                              <td class="product-quantity" data-title="Quantity">
+                                <div class="quantity_wrap">
+                                  <label
+                                    class="quantity_label"
+                                   >Quantity</label>
+                                  <div class="quantity buttons_added">
+                                    <button type="button" class="minus" onClick="decrement_quantity(<?php echo $product["cartID"]; ?>, '<?php echo $product["productPrice"]; ?>')">
+                                      <i class="bookory-icon-minus"></i>
+                                    </button>
+                                    <input
+                                      type="number"
+                                      class="input-text qty text"
+                                      step="1"
+                                      min="1"
+                                      max="999"
+                                      id="input-quantity-<?php echo $product['cartID'] ?>" 
+                                      name="quantity"
+                                      value="<?php echo $product['quantity'] ?>" /><button type="button" class="plus" onClick="increment_quantity(<?php echo $product["cartID"]; ?>, '<?php echo $product["productPrice"]; ?>')">
+                                      <i class="bookory-icon-plus"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </td>
+
+                              <td class="product-subtotal" data-title="Subtotal">
+                                <span class="woocommerce-Price-amount amount" id="cart-price-<?php echo $product["cartID"] ?>"><span
+                                      class="woocommerce-Price-currencySymbol" >₵</span><?php echo number_format($product['productPrice'] * $product['quantity'] , 2) ?></span>
+                              </td>
+                            </tr>
+                          <?php  } ?>
+
                         </tbody>
                       </table>
+                    </form>
 
-                      <div class="wc-proceed-to-checkout">
-                        <a
-                          href="https://demo2.pavothemes.com/bookory/../checkout/index.php"
-                          class="checkout-button button alt wc-forward">
-                          Proceed to checkout</a>
+                    <div class="cart-collaterals">
+                      <div class="cart_totals">
+                        <h2>Cart totals</h2>
+
+                        <table
+                          cellspacing="0"
+                          class="shop_table shop_table_responsive">
+                          <tbody>
+                            <tr class="cart-subtotal">
+                              <th>Subtotal</th>
+                              <td data-title="Subtotal">
+                                <span class="woocommerce-Price-amount amount" id="subtotal1"><span
+                                      class="woocommerce-Price-currencySymbol">₵</span><?php echo $total['Amount']?></span>
+                              </td>
+                            </tr>
+
+                            <tr class="order-total">
+                              <th>Total</th>
+                              <td data-title="Total">
+                                <strong><span class="woocommerce-Price-amount amount" id="totalPrice"><span
+                                        class="woocommerce-Price-currencySymbol">₵</span><?php echo $total['Amount']?></strong>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                        <div class="wc-proceed-to-checkout">
+                          <a
+                            href="../checkout/index.php"
+                            class="checkout-button button alt wc-forward">
+                            Proceed to checkout</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
+                  </div>
                 </div>
-              </div>
-              <!-- .entry-content -->
-            </article>
+                <!-- .entry-content -->
+              </article>
+            <?php } else { ?>
+              <article id="post-8" class="post-8 page type-page status-publish hentry">
+                <div class="entry-content">
+                  <div class="woocommerce">
+                    <div class="woocommerce-notices-wrapper"></div>
+                    <div class="wc-empty-cart-message">
+                      <div class="cart-empty woocommerce-info">
+                        Your cart is currently empty. </div>
+                    </div>
+                    <p class="return-to-shop">
+                      <a class="button wc-backward" href="../shop/index.php">
+                        Return to shop </a>
+                    </p>
+                  </div>
+                </div><!-- .entry-content -->
+              </article>
+            <?php } ?>
             <!-- #post-## -->
           </main>
           <!-- #main -->
@@ -1194,7 +981,7 @@ $cart = count_user_cart_controller($customer_id);
         </div>
       </div>
     </div>
-   <footer>
+    <footer>
       <div class="footer-width-fixer">
         <div
           data-elementor-type="wp-post"
@@ -1714,41 +1501,46 @@ $cart = count_user_cart_controller($customer_id);
       <div class="widget_shopping_cart_content">
         <div class="woocommerce-mini-cart-scroll">
           <ul class="woocommerce-mini-cart cart_list product_list_widget">
-            <li class="woocommerce-mini-cart-item mini_cart_item">
-              <a
-                href=""
-                class="remove remove_from_cart_button"
-                aria-label="Remove this item"
-                data-product_id="99"
-                data-cart_item_key="ac627ab1ccbdb62ec96e702f07f6425b"
-                data-product_sku="B87309287">×</a>
-              <a href=""><img
-                  width="600"
-                  height="840"
-                  src="../wp-content/uploads/images/29.jpg"
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  alt=""
-                  decoding="async" />Treachery: Alpha Colony Book 8</a>
-              <dl class="variation">
-                <dt class="variation-Vendor">Vendor:</dt>
-                <dd class="variation-Vendor">
-                  <p>Gregstore</p>
-                </dd>
-              </dl>
-              <span class="quantity">1 ×
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span></span>
-            </li>
+            <?php $carts = select_user_cart_controller($customer_id);
+            foreach ($carts as $all) {
+            ?>
+              <li class="woocommerce-mini-cart-item mini_cart_item">
+                <a
+                  href="../action/delete_from_cart.php?cart=<?php echo $all['cartID'] ?>"
+                  class="remove remove_from_cart_button"
+                  data-product_sku="B87309287">×</a>
+                <a href="../product/index.php?SKU=<?php echo $all['productID'] ?>"><img
+                    style="height: 85px;"
+                    src="../wp-content/uploads/books/<?php echo $all['productImage'] ?>"
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                    alt=""
+                    decoding="async" /><?php echo $all['productName'] ?></a>
+                <dl class="variation">
+                  <dt class="variation-Vendor">Category:</dt>
+                  <dd class="variation-Vendor">
+                    <p><?php echo $all['productCategory'] ?></p>
+                  </dd>
+                </dl>
+                <span class="quantity"><?php echo $all['quantity'] ?> ×
+                  <span class="woocommerce-Price-amount amount" style="color:black"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'], 2) ?></span></span>
+              </li>
+            <?php }
+            if (empty($carts)) { ?>
+              <p class="woocommerce-mini-cart__empty-message">No books in the cart.</p>
+            <?php   }
+            ?>
           </ul>
         </div>
+        <?php if (!empty($carts)) { ?>
+          <p class="woocommerce-mini-cart__total total">
+            <strong>Subtotal:</strong>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵ <?php echo $total['Amount'] ?></span></span>
+          </p>
 
-        <p class="woocommerce-mini-cart__total total">
-          <strong>Subtotal:</strong>
-          <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span>
-        </p>
-
-        <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
-        </p>
+          <p class="woocommerce-mini-cart__buttons buttons">
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          </p>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -1794,6 +1586,77 @@ $cart = count_user_cart_controller($customer_id);
     id="rs-plugin-settings-css"
     href="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/css/rs6.css?ver=6.7.18"
     media="all" />
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script>
+    function increment_quantity(cart_id, price) {
+      var inputQuantityElement = $("#input-quantity-" + cart_id);
+      var newQuantity = parseInt($(inputQuantityElement).val()) + 1;
+      var Prices = newQuantity * price;
+     var newPrice = (Prices + Number.EPSILON).toFixed(2);
+      save_to_db(cart_id, newQuantity, newPrice);
+    }
+
+    function decrement_quantity(cart_id, price) {
+      var inputQuantityElement = $("#input-quantity-" + cart_id);
+      if ($(inputQuantityElement).val() > 1) {
+        var newQuantity = parseInt($(inputQuantityElement).val()) - 1;
+        var Prices = newQuantity * price;
+        var newPrice = (Prices + Number.EPSILON).toFixed(2);
+        save_to_db(cart_id, newQuantity, newPrice);
+      }
+    }
+
+    function save_to_db(cart_id, new_quantity, newPrice) {
+      var inputQuantityElement = $("#input-quantity-" + cart_id);
+      var priceElement = $("#cart-price-" + cart_id);
+      $.ajax({
+        url: "../update_quantity.php",
+        data: "cart_id=" + cart_id + "&new_quantity=" + new_quantity ,
+        type: 'post',
+        dataType: "JSON",
+        success: function(data) {
+          $(inputQuantityElement).val(new_quantity);
+          $(priceElement).text("₵" + newPrice);
+          $("#totalPrice").text("₵" + data.data.Amount);
+           $("#subtotal1").text("₵" + data.data.Amount);
+        }
+      });
+    }
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('form[id^="remove-"]').submit(function(event) {
+				event.preventDefault();
+				$.ajax({
+					type: 'POST',
+					url: 'action/delete_from_cart.php',
+					dataType: 'json',
+					data: $(this).serialize(),
+					success: function(response) {
+						if (response.success) {
+							// Show success sweet alert
+							Swal.fire('Success!', response.message, 'success').then((result) => {
+								// Reload the Page
+								location.reload();
+							});
+						} else {
+							Swal.fire('Error!', response.message, 'error');
+						}
+					},
+					error: function() {
+						// Show error sweet alert
+						Swal.fire({
+							title: 'Oops!',
+							text: 'Something went wrong, please try again later',
+							icon: 'error',
+						});
+					}
+				});
+			});
+		});
+	</script>
+
   <script
     src="https://demo2.pavothemes.com/bookory/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0.1"
     id="swv-js"></script>

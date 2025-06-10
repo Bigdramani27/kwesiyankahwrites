@@ -520,7 +520,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -641,7 +641,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                                 <div class="site-header-cart menu">
                                   <a
                                     class="cart-contents"
-                                    href="cart/index.php"
+                                    href="../../cart/index.php"
                                     title="View your shopping cart">
                                     <span class="count">3</span>
                                     <span
@@ -863,7 +863,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                             <tr>
                               <td><img src="../wp-content/uploads/books/<?php echo $product['productImage'] ?>" style="width: 100px; height: 60px;"></td>
                               <td><?php echo $product['productName'] ?></td>
-                              <td>₵<?php echo $product['productPrice'] ?></td>
+                              <td>₵<?php echo number_format($product['productPrice'], 2) ?></td>
                               <td style="text-align: center;"><?php echo $product['productAvailable'] ?></td>
                               <td>
                                 <a href="edit_book.php?product=<?php echo $product['productID'] ?>" class="btn orange">Edit</a>
@@ -1583,7 +1583,7 @@ $count = count_wishlist_for_user_controller($customer_id);
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>

@@ -439,7 +439,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -561,7 +561,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                                 <div class="site-header-cart menu">
                                   <a
                                     class="cart-contents"
-                                    href="cart/index.php"
+                                    href="../../cart/index.php"
                                     title="View your shopping cart">
                                     <span class="count">3</span>
                                     <span
@@ -933,7 +933,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="wishlist/index.php"
+                          href="../wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -942,7 +942,7 @@ $count = count_wishlist_for_user_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="wishlist/index.php"> Wishlist </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -1506,7 +1506,7 @@ $count = count_wishlist_for_user_controller($customer_id);
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>

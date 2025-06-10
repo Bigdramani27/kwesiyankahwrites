@@ -26,7 +26,7 @@ $cart = count_user_cart_controller($customer_id);
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <title>Categories &#8211; Bookory</title>
+  <title>Prof Kwesi Yankah Book Store</title>
   <link
     rel="stylesheet"
     id="dashicons-css"
@@ -274,6 +274,29 @@ $cart = count_user_cart_controller($customer_id);
   <script
     src="../wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1"
     id="jquery-migrate-js"></script>
+    <style>
+  
+    .home-390 {
+      height: 390px !important
+    }
+
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      .home-390 {
+      height: 270px !important
+      }
+    }
+    @media (max-width: 426px) {
+      .home-390 {
+        height: 190px !important
+      }
+    }
+
+    @media (min-width: 1210px) and (max-width: 1390px) {
+      .home-390 {
+        height: 300px !important
+      }
+    }
+</style>
 </head>
 
 <body
@@ -403,7 +426,7 @@ $cart = count_user_cart_controller($customer_id);
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
@@ -508,7 +531,7 @@ $cart = count_user_cart_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="header-wishlist"
-                                      href="wishlist/index.php">
+                                      href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
@@ -525,7 +548,7 @@ $cart = count_user_cart_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../cart/index.php"
+                                      href="../../../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -715,7 +738,7 @@ $cart = count_user_cart_controller($customer_id);
                             width="600"
                             height="840"
                             src="../wp-content/uploads/books/<?php echo  $product['productImage'] ?>"
-                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail home-390"
                             alt=""
                             decoding="async" />
                         </div>
@@ -731,8 +754,8 @@ $cart = count_user_cart_controller($customer_id);
                             <div class="opal-add-to-cart-button">
                               <a
                                 href=""
-                                aria-describedby="woocommerce_loop_add_to_cart_link_describedby_77"
-                                data-quantity="1"
+                                 data-sku="<?php echo $product['productID']; ?>"
+                                id="sku-<?php echo $product['productID']; ?>"
                                 class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
                               <span
                                 id="woocommerce_loop_add_to_cart_link_describedby_77"
@@ -753,7 +776,7 @@ $cart = count_user_cart_controller($customer_id);
                         <div class="woocommerce-loop-product__author">
                           <a href="../author/index.php"><?php echo  $product['productAuthor'] ?></a>
                         </div>
-                        <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo  $product['productPrice'] ?></span></span>
+                        <span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($product['productPrice'], 2) ?></span></span>
                       </div>
                     </div>
                   </li>
@@ -1505,7 +1528,7 @@ $cart = count_user_cart_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
-  <div class="site-header-cart-side">
+ <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>
@@ -1514,41 +1537,46 @@ $cart = count_user_cart_controller($customer_id);
       <div class="widget_shopping_cart_content">
         <div class="woocommerce-mini-cart-scroll">
           <ul class="woocommerce-mini-cart cart_list product_list_widget">
-            <li class="woocommerce-mini-cart-item mini_cart_item">
-              <a
-                href=""
-                class="remove remove_from_cart_button"
-                aria-label="Remove this item"
-                data-product_id="99"
-                data-cart_item_key="ac627ab1ccbdb62ec96e702f07f6425b"
-                data-product_sku="B87309287">×</a>
-              <a href=""><img
-                  width="600"
-                  height="840"
-                  src="../wp-content/uploads/images/29.jpg"
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  alt=""
-                  decoding="async" />Treachery: Alpha Colony Book 8</a>
-              <dl class="variation">
-                <dt class="variation-Vendor">Vendor:</dt>
-                <dd class="variation-Vendor">
-                  <p>Gregstore</p>
-                </dd>
-              </dl>
-              <span class="quantity">1 ×
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span></span>
-            </li>
+            <?php $carts = select_user_cart_controller($customer_id);
+            foreach ($carts as $all) {
+            ?>
+              <li class="woocommerce-mini-cart-item mini_cart_item">
+                <a
+                  href="../action/delete_from_cart.php?cart=<?php echo $all['cartID'] ?>"
+                  class="remove remove_from_cart_button"
+                  data-product_sku="B87309287">×</a>
+                <a href="../product/index.php?SKU=<?php echo $all['productID'] ?>"><img
+                    style="height: 85px;"
+                    src="../wp-content/uploads/books/<?php echo $all['productImage'] ?>"
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                    alt=""
+                    decoding="async" /><?php echo $all['productName'] ?></a>
+                <dl class="variation">
+                  <dt class="variation-Vendor">Category:</dt>
+                  <dd class="variation-Vendor">
+                    <p><?php echo $all['productCategory'] ?></p>
+                  </dd>
+                </dl>
+                <span class="quantity"><?php echo $all['quantity'] ?> ×
+                  <span class="woocommerce-Price-amount amount" style="color:black"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'], 2) ?></span></span>
+              </li>
+            <?php }
+            if (empty($carts)) { ?>
+              <p class="woocommerce-mini-cart__empty-message">No books in the cart.</p>
+            <?php   }
+            ?>
           </ul>
         </div>
+        <?php if (!empty($carts)) { ?>
+          <p class="woocommerce-mini-cart__total total">
+            <strong>Subtotal:</strong>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵ <?php echo $total['Amount'] ?></span></span>
+          </p>
 
-        <p class="woocommerce-mini-cart__total total">
-          <strong>Subtotal:</strong>
-          <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span>
-        </p>
-
-        <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
-        </p>
+          <p class="woocommerce-mini-cart__buttons buttons">
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          </p>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -1624,6 +1652,42 @@ $cart = count_user_cart_controller($customer_id);
                 Swal.fire('Success!', response.message, 'success').then((result) => {
                 location.reload();
               });
+            }
+          },
+          error: function() {
+            Swal.fire({
+              title: 'Oops!',
+              text: 'Something went wrong, please try again later',
+              icon: 'error',
+            });
+          }
+        });
+      });
+    });
+  </script>
+    <script>
+    $(document).ready(function() {
+      $('[id^="sku-"]').click(function(e) {
+        e.preventDefault();
+
+        const sku = $(this).data('sku');
+        const quantity = 1;
+
+        $.ajax({
+          type: 'POST',
+          url: '../action/add_to_cart.php',
+          dataType: 'json',
+          data: {
+            SKU: sku,
+            quantity: quantity
+          },
+          success: function(response) {
+            if (response.success) {
+              Swal.fire('Success!', response.message, 'success').then(() => {
+                location.reload();
+              });
+            } else {
+              Swal.fire('Error', 'Could not add item to cart.', 'error');
             }
           },
           error: function() {

@@ -1,3 +1,11 @@
+<?php
+session_start();
+require('../controllers/customer_controller.php');
+$emails = isset($_SESSION['email']) ? $_SESSION['email'] : "";
+if ($emails == true) {
+  header('Location: ../index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -8,7 +16,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <title>My account &#8211; Bookory</title>
+  <title>Prof Kwesi Yankah Book Store</title>
   <meta name="robots" content="max-image-preview:large, noindex, follow" />
   <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
 
@@ -490,7 +498,7 @@
                         <div class="site-header-cart menu">
                           <a
                             class="cart-contents"
-                            href="cart/index.php"
+                            href="../../cart/index.php"
                             title="View your shopping cart">
                             <span class="count">0</span>
                             <span class="woocommerce-Price-amount amount"><bdi><span
