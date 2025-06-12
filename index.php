@@ -430,14 +430,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -1032,29 +1038,49 @@ $total = total_amount_controller($customer_id);
                                             class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail home-390"
                                             alt="" />
                                         </div>
-                                        <div class="group-action">
-                                          <div class="shop-action vertical">
-                                            <form id='wishlist-<?php echo $product['productID'] ?>'>
-                                              <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
-                                              <button type="submit"
-                                                class="woosw-btn woosw-btn-111">
-                                                Add to wishlist
-                                              </button>
-                                            </form>
+                                        <?php if ($customer_id != 0) { ?>
+                                          <div class="group-action">
+                                            <div class="shop-action vertical">
+                                              <form id='wishlist-<?php echo $product['productID'] ?>'>
+                                                <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
+                                                <button type="submit"
+                                                  class="woosw-btn woosw-btn-111">
+                                                  Add to wishlist
+                                                </button>
+                                              </form>
 
-                                            <div class="opal-add-to-cart-button">
-                                              <a
-                                                data-sku="<?php echo $product['productID']; ?>"
-                                                id="sku-<?php echo $product['productID']; ?>"
-                                                href=""
-                                                class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                                              <span
-                                                id="woocommerce_loop_add_to_cart_link_describedby_111"
-                                                class="screen-reader-text">
-                                              </span>
+                                              <div class="opal-add-to-cart-button">
+                                                <a
+                                                  data-sku="<?php echo $product['productID']; ?>"
+                                                  id="sku-<?php echo $product['productID']; ?>"
+                                                  href=""
+                                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                                <span
+                                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                                  class="screen-reader-text">
+                                                </span>
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
+                                        <?php } else { ?>
+                                          <div class="group-action">
+                                            <div class="shop-action vertical">
+                                              <a href="my-account/index.php"
+                                                class="woosw-btn woosw-btn-111">
+                                                Add to wishlist
+                                              </a>
+                                              <div class="opal-add-to-cart-button">
+                                                <a
+                                                  href="my-account/index.php"
+                                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                                <span
+                                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                                  class="screen-reader-text">
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        <?php  } ?>
                                         <a
                                           href="product/index.php?SKU=<?php echo $product['productID'] ?>"
                                           class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
@@ -1487,26 +1513,49 @@ $total = total_amount_controller($customer_id);
                                           class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail  home-370"
                                           alt="" />
                                       </div>
-                                      <div class="group-action">
-                                        <div class="shop-action vertical">
-                                          <form id='wishlist-<?php echo $product['productID'] ?>'>
-                                            <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
-                                            <button type="submit"
-                                              class="woosw-btn woosw-btn-111">
-                                              Add to wishlist
-                                            </button>
-                                          </form>
-                                          <div class="opal-add-to-cart-button">
-                                            <a
-                                              href="product/index.php?SKU=<?php echo $product['productID'] ?>"
-                                              class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                                            <span
-                                              id="woocommerce_loop_add_to_cart_link_describedby_111"
-                                              class="screen-reader-text">
-                                            </span>
+                                      <?php if ($customer_id != 0) { ?>
+                                        <div class="group-action">
+                                          <div class="shop-action vertical">
+                                            <form id='wishlist-<?php echo $product['productID'] ?>'>
+                                              <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
+                                              <button type="submit"
+                                                class="woosw-btn woosw-btn-111">
+                                                Add to wishlist
+                                              </button>
+                                            </form>
+
+                                            <div class="opal-add-to-cart-button">
+                                              <a
+                                                data-sku="<?php echo $product['productID']; ?>"
+                                                id="sku-<?php echo $product['productID']; ?>"
+                                                href=""
+                                                class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                              <span
+                                                id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                                class="screen-reader-text">
+                                              </span>
+                                            </div>
                                           </div>
                                         </div>
-                                      </div>
+                                      <?php } else { ?>
+                                        <div class="group-action">
+                                          <div class="shop-action vertical">
+                                            <a href="my-account/index.php"
+                                              class="woosw-btn woosw-btn-111">
+                                              Add to wishlist
+                                            </a>
+                                            <div class="opal-add-to-cart-button">
+                                              <a
+                                                href="my-account/index.php"
+                                                class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                              <span
+                                                id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                                class="screen-reader-text">
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      <?php  } ?>
                                       <a
                                         href="product/index.php?SKU=<?php echo $product['productID'] ?>"
                                         class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
@@ -1622,7 +1671,7 @@ $total = total_amount_controller($customer_id);
 
                             <div class="elementor-icon-box-content">
                               <h3 class="elementor-icon-box-title">
-                                <span> 30 </span>
+                                <span> 40+ </span>
                               </h3>
 
                               <p class="elementor-icon-box-description">
@@ -1658,11 +1707,11 @@ $total = total_amount_controller($customer_id);
 
                             <div class="elementor-icon-box-content">
                               <h3 class="elementor-icon-box-title">
-                                <span> 8 </span>
+                                <span> 2M+ </span>
                               </h3>
 
                               <p class="elementor-icon-box-description">
-                                authors
+                                Readers
                               </p>
                             </div>
                           </div>
@@ -1694,7 +1743,7 @@ $total = total_amount_controller($customer_id);
 
                             <div class="elementor-icon-box-content">
                               <h3 class="elementor-icon-box-title">
-                                <span> 1,589 </span>
+                                <span> 10.5K+ </span>
                               </h3>
 
                               <p class="elementor-icon-box-description">
@@ -1779,7 +1828,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="index.php"
+                          href="shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1790,7 +1839,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="index.php"> Shop </a>
+                          <a href="shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1812,7 +1861,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="my-account/index.php"
+                          href="dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1823,7 +1872,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="my-account/index.php"> Account </a>
+                          <a href="dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1992,7 +2041,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>

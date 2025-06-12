@@ -14,6 +14,7 @@ $num_per_page = 6;
 $start_from = ($page - 1) * 6;
 $count = count_wishlist_for_user_controller($customer_id);
 $cart = count_user_cart_controller($customer_id);
+$total = total_amount_controller($customer_id);
 ?>
 
 <!DOCTYPE html>
@@ -274,17 +275,17 @@ $cart = count_user_cart_controller($customer_id);
   <script
     src="../wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1"
     id="jquery-migrate-js"></script>
-    <style>
-  
+  <style>
     .home-390 {
       height: 390px !important
     }
 
     @media (min-width: 1024px) and (max-width: 1200px) {
       .home-390 {
-      height: 270px !important
+        height: 270px !important
       }
     }
+
     @media (max-width: 426px) {
       .home-390 {
         height: 190px !important
@@ -296,7 +297,7 @@ $cart = count_user_cart_controller($customer_id);
         height: 300px !important
       }
     }
-</style>
+  </style>
 </head>
 
 <body
@@ -424,14 +425,20 @@ $cart = count_user_cart_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -509,7 +516,7 @@ $cart = count_user_cart_controller($customer_id);
                           <div class="elementor-widget-container">
                             <div class="elementor-header-group-wrapper">
                               <div class="header-group-action">
-                                   <?php if ($customer_id != 0) {  ?>
+                                <?php if ($customer_id != 0) {  ?>
                                   <div class="site-header-wishlist">
                                     <div class="site-header-account">
                                       <a href="">
@@ -533,10 +540,10 @@ $cart = count_user_cart_controller($customer_id);
                                       class="header-wishlist"
                                       href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
-                                         <a
+                                    <a
                                       class="header-wishlist"
                                       href="../my-account/index.php">
                                       <i class="bookory-icon-heart-1"></i>
@@ -544,11 +551,11 @@ $cart = count_user_cart_controller($customer_id);
                                   <?php } ?>
                                 </div>
 
-                               <div class="site-header-cart menu">
+                                <div class="site-header-cart menu">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -742,28 +749,49 @@ $cart = count_user_cart_controller($customer_id);
                             alt=""
                             decoding="async" />
                         </div>
-                        <div class="group-action">
-                          <div class="shop-action vertical">
-                            <form id='wishlist-<?php echo $product['productID'] ?>'>
-                              <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
-                              <button type="submit"
-                                class="woosw-btn woosw-btn-111">
-                                Add to wishlist
-                              </button>
-                            </form>
-                            <div class="opal-add-to-cart-button">
-                              <a
-                                href=""
-                                 data-sku="<?php echo $product['productID']; ?>"
-                                id="sku-<?php echo $product['productID']; ?>"
-                                class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                              <span
-                                id="woocommerce_loop_add_to_cart_link_describedby_77"
-                                class="screen-reader-text">
-                              </span>
+                        <?php if ($customer_id != 0) { ?>
+                          <div class="group-action">
+                            <div class="shop-action vertical">
+                              <form id='wishlist-<?php echo $product['productID'] ?>'>
+                                <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
+                                <button type="submit"
+                                  class="woosw-btn woosw-btn-111">
+                                  Add to wishlist
+                                </button>
+                              </form>
+
+                              <div class="opal-add-to-cart-button">
+                                <a
+                                  data-sku="<?php echo $product['productID']; ?>"
+                                  id="sku-<?php echo $product['productID']; ?>"
+                                  href=""
+                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                <span
+                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                  class="screen-reader-text">
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        <?php } else { ?>
+                          <div class="group-action">
+                            <div class="shop-action vertical">
+                              <a href="../my-account/index.php"
+                                class="woosw-btn woosw-btn-111">
+                                Add to wishlist
+                              </a>
+                              <div class="opal-add-to-cart-button">
+                                <a
+                                  href="../my-account/index.php"
+                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                <span
+                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                  class="screen-reader-text">
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        <?php  } ?>
                         <a
                           href="../product/index.php?SKU=<?php echo $product['productID'] ?>"
                           class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
@@ -910,7 +938,7 @@ $cart = count_user_cart_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../index.php"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -921,7 +949,7 @@ $cart = count_user_cart_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php"> Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -943,7 +971,7 @@ $cart = count_user_cart_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../my-account/index.php"
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -954,7 +982,7 @@ $cart = count_user_cart_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../my-account/index.php"> Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1123,7 +1151,7 @@ $cart = count_user_cart_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1182,12 +1210,12 @@ $cart = count_user_cart_controller($customer_id);
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1368,27 +1396,27 @@ $cart = count_user_cart_controller($customer_id);
   </div>
   <!-- #page -->
 
-<?php if ($customer_id != 0) { ?>
+  <?php if ($customer_id != 0) { ?>
     <div class="account-wrap d-none">
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1478,6 +1506,11 @@ $cart = count_user_cart_controller($customer_id);
     </div>
   </div>
   <div class="bookory-overlay"></div>
+  <div id="bookory-canvas-filter" class="bookory-canvas-filter">
+    <span class="filter-close">HIDE FILTER</span>
+    <div class="bookory-canvas-filter-wrap"></div>
+  </div>
+  <div class="bookory-overlay-filter"></div>
   <div class="site-search-popup">
     <div class="site-search-popup-wrap">
       <div class="site-search ajax-search">
@@ -1528,7 +1561,7 @@ $cart = count_user_cart_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
- <div class="site-header-cart-side">
+  <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>
@@ -1649,7 +1682,7 @@ $cart = count_user_cart_controller($customer_id);
           data: $(this).serialize(),
           success: function(response) {
             if (response.success) {
-                Swal.fire('Success!', response.message, 'success').then((result) => {
+              Swal.fire('Success!', response.message, 'success').then((result) => {
                 location.reload();
               });
             }
@@ -1665,7 +1698,7 @@ $cart = count_user_cart_controller($customer_id);
       });
     });
   </script>
-    <script>
+  <script>
     $(document).ready(function() {
       $('[id^="sku-"]').click(function(e) {
         e.preventDefault();

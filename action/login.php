@@ -12,7 +12,7 @@ if ($customer_email == NULL) {
 } else {
     if (password_verify($password, $customer_email['password'])) {
         $_SESSION['email'] = $customer_email['email'];
-        $_SESSION['first_name'] = $customer_email['firstName'];
+        $_SESSION['firstName'] = $customer_email['firstName'];
         $_SESSION['customer_id'] = $customer_email['userID'];
         $_SESSION['lastName'] = $customer_email['lastName'];
         $_SESSION['userRole'] = $customer_email['userRole'];

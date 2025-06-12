@@ -391,16 +391,22 @@ $total = total_amount_controller($customer_id);
                   <div class="elementor-widget-container">
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
-                        <div class="site-header-cart menu">
+                                   <div class="site-header-cart menu">
+                        <?php if ($customer_id != 0) {  ?>
                           <a
                             class="cart-contents"
                             href="cart/index.php"
                             title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
+                            <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                           </a>
-                        </div>
+                        <?php } else {  ?>
+                          <a
+                            class="cart-contents"
+                            href="my-account/index.php"
+                            title="View your shopping cart">
+                          </a>
+                        <?php  } ?>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -666,7 +672,7 @@ $total = total_amount_controller($customer_id);
                   <div class="elementor-widget-container">
                     <div class="bookory-woocommerce-title">Error 404</div>
                     <nav class="woocommerce-breadcrumb">
-                      <a href="https://demo2.pavothemes.com/bookory">Home</a><i class="bookory-icon-right-arrow"></i>Error 404
+                      <a href="index.php">Home</a><i class="bookory-icon-right-arrow"></i>Error 404
                     </nav>
                   </div>
                 </div>
@@ -696,7 +702,7 @@ $total = total_amount_controller($customer_id);
                 </div>
                 <div class="error-btn">
                   <a
-                    href="https://demo2.pavothemes.com/bookory/"
+                    href="index.php"
                     class="button-404">
                     <span class="button-text">Homepage<i class="bookory-icon-angle-right"></i></span>
                   </a>
@@ -739,7 +745,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="https://demo2.pavothemes.com/bookory/"
+                          href="shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -750,9 +756,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="https://demo2.pavothemes.com/bookory/">
-                            Shop
-                          </a>
+                          <a href="shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -774,7 +778,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -785,10 +789,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Account
-                          </a>
+                          <a href="dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -831,7 +832,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -840,10 +841,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Wishlist
-                          </a>
+                          <a href="wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -960,7 +958,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1421,180 +1419,183 @@ $total = total_amount_controller($customer_id);
   <link
     rel="stylesheet"
     id="wc-blocks-style-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-9.5.1"
+    href="wp-content/plugins/woocommerce/assets/client/blocks/wc-blocksfbdf.css?ver=wc-9.5.1"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-icon-list-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1742270149"
+    href="wp-content/uploads/elementor/css/custom-widget-icon-list.min2420.css?ver=1742270149"
     media="all" />
   <link
     rel="stylesheet"
     id="e-animation-shrink-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-shrink.min.css?ver=3.26.0"
+    href="wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-shrink.min42e3.css?ver=3.26.0"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-social-icons-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=3.26.0"
+    href="wp-content/plugins/elementor/assets/css/widget-social-icons.min42e3.css?ver=3.26.0"
     media="all" />
   <link
     rel="stylesheet"
     id="e-apple-webkit-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1742270149"
+    href="wp-content/uploads/elementor/css/custom-apple-webkit.min2420.css?ver=1742270149"
     media="all" />
   <link
     rel="stylesheet"
     id="elementor-post-3161-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/uploads/elementor/css/post-3161.css?ver=1742270152"
+    href="wp-content/uploads/elementor/css/post-3161206e.css?ver=1742270152"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-heading-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.26.0"
+    href="wp-content/plugins/elementor/assets/css/widget-heading.min42e3.css?ver=3.26.0"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-icon-box-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/uploads/elementor/css/custom-widget-icon-box.min.css?ver=1742270149"
+    href="wp-content/uploads/elementor/css/custom-widget-icon-box.min2420.css?ver=1742270149"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-text-editor-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/css/widget-text-editor.min.css?ver=3.26.0"
+    href="wp-content/plugins/elementor/assets/css/widget-text-editor.min42e3.css?ver=3.26.0"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-image-css"
-    href="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.26.0"
+    href="wp-content/plugins/elementor/assets/css/widget-image.min42e3.css?ver=3.26.0"
     media="all" />
   <link
     rel="stylesheet"
     id="rs-plugin-settings-css"
-    href="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/css/rs6.css?ver=6.7.18"
+    href="wp-content/plugins/revslider/sr6/assets/css/rs6efd5.css?ver=6.7.18"
     media="all" />
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0.1"
-    id="swv-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
-  <script
-    src="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/js/rbtools.min.js?ver=6.7.18"
-    defer
-    async
-    id="tp-tools-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/api-request.min.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"
+<script
+    src="wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/dist/url.min.js?ver=e87eb76272a3a08402d2"
+    src="wp-includes/js/dist/url.min9481.js?ver=e87eb76272a3a08402d2"
     id="wp-url-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/dist/api-fetch.min.js?ver=d387b816bc1ed2042e28"
+    src="wp-includes/js/dist/api-fetch.min53e9.js?ver=d387b816bc1ed2042e28"
     id="wp-api-fetch-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woo-variation-swatches/assets/js/frontend.min.js?ver=1732076616"
+    src="wp-content/plugins/woo-variation-swatches/assets/js/frontend.min63ce.js?ver=1732076616"
     id="woo-variation-swatches-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js?ver=4.9.6"
+    src="wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min1845.js?ver=4.9.6"
     id="perfect-scrollbar-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woo-smart-wishlist/assets/js/frontend.js?ver=4.9.6"
-    id="woosw-frontend-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/frontend/main.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/frontend/main3601.js?ver=2.2.0"
     id="bookory-theme-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/imagesloaded.min.js?ver=5.0.0"
+    src="wp-includes/js/imagesloaded.minbb93.js?ver=5.0.0"
     id="imagesloaded-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/skip-link-focus-fix.min.js?ver=20130115"
+    src="wp-content/themes/bookory/assets/js/skip-link-focus-fix.min08e0.js?ver=20130115"
     id="bookory-skip-link-focus-fix-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/frontend/search-popup.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/frontend/search-popup3601.js?ver=2.2.0"
     id="bookory-search-popup-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/frontend/text-editor.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/frontend/text-editor3601.js?ver=2.2.0"
     id="bookory-text-editor-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/frontend/nav-mobile.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/frontend/nav-mobile3601.js?ver=2.2.0"
     id="bookory-nav-mobile-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/inc/megamenu/assets/js/frontend.js?ver=2.2.0"
+    src="wp-content/themes/bookory/inc/megamenu/assets/js/frontend3601.js?ver=2.2.0"
     id="bookory-megamenu-frontend-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/frontend/login.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/frontend/login3601.js?ver=2.2.0"
     id="bookory-ajax-login-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=9.5.1"
+    src="wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min0c46.js?ver=9.5.1"
     id="wc-add-to-cart-variation-js"
     data-wp-strategy="defer"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/vendor/slick.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/vendor/slick.min3601.js?ver=2.2.0"
     id="slick-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woo-smart-quick-view/assets/js/frontend.js?ver=4.1.4"
+    src="wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
     id="woosq-frontend-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=9.5.1"
+    src="wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
     id="sourcebuster-js-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=9.5.1"
+    src="wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
     id="wc-order-attribution-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/header-cart.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/tooltipster.bundle.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
     id="bookory-products-ajax-search-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/main.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/quantity.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/quantity.min3601.js?ver=2.2.0"
     id="bookory-input-quantity-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min3601.js?ver=2.2.0"
     id="bookory-off-canvas-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min3601.js?ver=2.2.0"
     id="bookory-cart-canvas-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.26.0"
-    id="elementor-webpack-runtime-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.26.0"
-    id="elementor-frontend-modules-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"
+    src="wp-includes/js/jquery/ui/core.minb37e.js?ver=1.13.3"
     id="jquery-ui-core-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.26.0"
+    src="wp-includes/js/jquery/ui/mouse.minb37e.js?ver=1.13.3"
+    id="jquery-ui-mouse-js"></script>
+  <script
+    src="wp-includes/js/jquery/ui/slider.minb37e.js?ver=1.13.3"
+    id="jquery-ui-slider-js"></script>
+  <script
+    src="wp-content/plugins/woocommerce/assets/js/jquery-ui-touch-punch/jquery-ui-touch-punch.min0c46.js?ver=9.5.1"
+    id="wc-jquery-ui-touchpunch-js"></script>
+  <script
+    src="wp-content/plugins/woocommerce/assets/js/accounting/accounting.minaffb.js?ver=0.4.2"
+    id="accounting-js"></script>
+  <script id="wc-price-slider-js-extra">
+    var woocommerce_price_slider_params = {
+      currency_format_num_decimals: "0",
+      currency_format_symbol: "₵",
+      currency_format_decimal_sep: ".",
+      currency_format_thousand_sep: ",",
+      currency_format: "%s%v",
+    };
+  </script>
+  <script
+    src="wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min0c46.js?ver=9.5.1"
+    id="wc-price-slider-js"></script>
+  <script
+    src="wp-content/plugins/elementor/assets/js/webpack.runtime.min42e3.js?ver=3.26.0"
+    id="elementor-webpack-runtime-js"></script>
+  <script
+    src="wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
+    id="elementor-frontend-modules-js"></script>
+
+  <script
+    src="wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
     id="elementor-frontend-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/elementor-frontend.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/vendor/jquery.sticky.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
     id="elementor-sticky-js"></script>
   <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/themes/bookory/assets/js/vendor/sticky.js?ver=2.2.0"
+    src="wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
     id="bookory-elementor-sticky-js"></script>
-  <script
-    src="https://demo2.pavothemes.com/bookory/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=9.5.1"
-    id="wc-cart-fragments-js"
-    defer
-    data-wp-strategy="defer"></script>
 </body>
 
 </html>

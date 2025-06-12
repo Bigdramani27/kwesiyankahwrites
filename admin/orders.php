@@ -9,6 +9,7 @@ if ($user_role != 'admin') {
   header("Location: ../404.php");
 }
 $count = count_wishlist_for_user_controller($customer_id);
+$cart = count_user_cart_controller($customer_id);
 ?>
 <html lang="en-US">
 
@@ -326,7 +327,8 @@ $count = count_wishlist_for_user_controller($customer_id);
       font-size: 14px;
       text-align: center;
     }
-        .orange:hover{
+
+    .orange:hover {
       color: white;
     }
   </style>
@@ -460,14 +462,20 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -633,7 +641,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                               id="menu-item-1191"
                               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1191">
                               <a href="#"><span class="menu-title">Categories</span></a>
-                    <ul class="sub-menu">
+                              <ul class="sub-menu">
                                 <li
                                   id="menu-item-5751"
                                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5751">
@@ -667,7 +675,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                                   <a href="../categories/index.php?category=<?php echo urlencode('Journal Articles'); ?>"><span class="menu-title">Journal Articles
                                     </span></a>
                                 </li>
-                                </ul>
+                              </ul>
                             </li>
                             <li
                               id="menu-item-2842"
@@ -766,7 +774,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders is-active">
                         <a href="orders.php" aria-current="page"> Orders </a>
                       </li>
-                       <li
+                      <li
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders ">
                         <a href="requested_books.php" aria-current="page"> Requested Books </a>
                       </li>
@@ -828,8 +836,7 @@ $count = count_wishlist_for_user_controller($customer_id);
           class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="5c1c1fa"
           data-element_type="section"
-          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-          style="width: 753px; left: 0px">
+          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
           <div class="elementor-container elementor-column-gap-no">
             <div
               class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
@@ -845,7 +852,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="https://demo2.pavothemes.com/bookory/"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -856,9 +863,7 @@ $count = count_wishlist_for_user_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="https://demo2.pavothemes.com/bookory/">
-                            Shop
-                          </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -880,7 +885,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -891,10 +896,7 @@ $count = count_wishlist_for_user_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Account
-                          </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -937,7 +939,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="../wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -946,10 +948,7 @@ $count = count_wishlist_for_user_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Wishlist
-                          </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -1066,7 +1065,7 @@ $count = count_wishlist_for_user_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1125,12 +1124,12 @@ $count = count_wishlist_for_user_controller($customer_id);
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1366,7 +1365,7 @@ $count = count_wishlist_for_user_controller($customer_id);
             <li
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1191">
               <a href="#">Categories</a>
-         <ul class="sub-menu">
+              <ul class="sub-menu">
                 <li
                   id="menu-item-5751"
                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5751">
@@ -1512,7 +1511,7 @@ $count = count_wishlist_for_user_controller($customer_id);
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>

@@ -72,5 +72,26 @@ function update_user_password_controller($password, $email)
     return $customer_instance->update_user_password($password, $email);
 }
 
+//adding to shipping for a specific user
+function add_to_shipping_controller($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone)
+{
+    $customer_instance = new Customer();
+    return $customer_instance->add_to_shipping($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone);
+}
+
+//selecting one person in shipping to see if they are there
+function select_one_shipping_userID_controller($userID)
+{
+    $customer_instance = new Customer();
+    return $customer_instance->select_one_shipping_userID($userID);
+}
+
+//update shipping for a specific user
+function updating_shipping_for_user_controller($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone)
+{
+    $customer_instance = new Customer();
+    return $customer_instance->updating_shipping_for_user($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone);
+}
+	
 
 ?>

@@ -1,16 +1,4 @@
-@charset "UTF-8";
-/*!
-Theme Name:   Bookory
-Theme URI:    https://demo2.pavothemes.com/bookory/
-Author:       PavoThemes
-Author URI:   https://pavothemes.com/
-Description:  Bookory is a clean, flexible and lightweight Bookstore WooCommerce Theme created to help you quickly build an online store based on WordPress that promotes and sells printed books, magazines or digital ebooks. It’s awesome for everyone, bookstore owners, publishers, publishing houses, authors & writers to start their own bookshop website.
-Version:      2.2.0
-License:      GNU General Public License v2 or later
-License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  bookory
-Tags:         woocommerce, ecommerce, fashion, bookstore, store, shop, bookshop, responsive, books, shopping, modern, furniture, elementor, author, clean
-*/
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -3831,7 +3819,7 @@ textarea {
   vertical-align: baseline;
   /* Improves appearance and consistency in all browsers */
   /* stylelint-disable */
-  *vertical-align: middle;
+  vertical-align: middle;
   /* Improves appearance and consistency in all browsers */
   /* stylelint-enable */
 }
@@ -6761,7 +6749,6 @@ nav.post-navigation .nav-next img {
   font-variant: normal;
   font-weight: normal;
   line-height: 1;
-  vertical-align: middle;
   content: "";
   display: block;
 }
@@ -7681,7 +7668,6 @@ a#variations_clear::before {
     line-height: 1;
     vertical-align: middle;
     content: "";
-    float: right;
     margin-left: 10px;
     line-height: 1.5;
   }
@@ -7742,7 +7728,6 @@ a#variations_clear::before {
     font-variant: normal;
     font-weight: normal;
     line-height: 1;
-    vertical-align: middle;
     content: "";
     display: block !important;
     position: absolute;
@@ -7829,7 +7814,6 @@ body.loading::after {
   font-variant: normal;
   font-weight: normal;
   line-height: 1;
-  vertical-align: middle;
   content: "";
   animation: fa-spin 0.75s linear infinite;
   height: 40px;
@@ -7864,7 +7848,6 @@ body.loading:before {
   font-variant: normal;
   font-weight: normal;
   line-height: 1;
-  vertical-align: middle;
   content: "";
   font-size: 164px;
   color: var(--light);
@@ -8000,7 +7983,6 @@ h2.resp-accordion.active:before {
   font-variant: normal;
   font-weight: normal;
   line-height: 1;
-  vertical-align: middle;
   line-height: inherit;
   content: "" !important;
   animation: fa-spin 0.75s linear infinite;
@@ -8162,7 +8144,6 @@ a.read-more:after {
   line-height: 1;
   vertical-align: middle;
   content: "";
-  float: right;
   margin-left: 0.5em;
   line-height: 20px;
   font-size: 14px;

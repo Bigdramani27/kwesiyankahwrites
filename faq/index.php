@@ -5,7 +5,7 @@ require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $count = count_wishlist_for_user_controller($customer_id);
-$cart =count_user_cart_controller($customer_id);
+$cart = count_user_cart_controller($customer_id);
 $total = total_amount_controller($customer_id);
 ?>
 <!DOCTYPE html>
@@ -399,14 +399,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -509,10 +515,10 @@ $total = total_amount_controller($customer_id);
                                       class="header-wishlist"
                                       href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
-                                         <a
+                                    <a
                                       class="header-wishlist"
                                       href="../my-account/index.php">
                                       <i class="bookory-icon-heart-1"></i>
@@ -520,11 +526,11 @@ $total = total_amount_controller($customer_id);
                                   <?php } ?>
                                 </div>
 
-                                  <div class="site-header-cart menu">
+                                <div class="site-header-cart menu">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -1223,7 +1229,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../index.php"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1234,7 +1240,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php"> Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1256,7 +1262,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../my-account/index.php"
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1267,7 +1273,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../my-account/index.php"> Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1310,7 +1316,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../../wishlist/index.php"
+                          href="../wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -1319,7 +1325,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../../wishlist/index.php"> Wishlist </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -1436,7 +1442,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1495,12 +1501,12 @@ $total = total_amount_controller($customer_id);
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1685,22 +1691,22 @@ $total = total_amount_controller($customer_id);
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1754,7 +1760,7 @@ $total = total_amount_controller($customer_id);
                 </li>
                 <li
                   class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6218">
-                  <a href="404.html">Book Chapters</a>
+                  <a href="404.php">Book Chapters</a>
                 </li>
                 <li
                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3156">
@@ -1830,7 +1836,7 @@ $total = total_amount_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
- <div class="site-header-cart-side">
+  <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>

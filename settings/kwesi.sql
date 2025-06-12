@@ -25,7 +25,6 @@ create table shipping(
     apartment varchar(100),
     city varchar(100) not null,
     zip varchar(10),
-    email varchar(100) not null,
     phone varchar(20) not null,
     primary key(shippingID),
     foreign key (userID) references users (userID)
@@ -64,6 +63,7 @@ create table orders(
     productID BigInt not null,
     userId BigInt not null,
     total float not null,
+    orderNote text, 
     primary key(orderID),
     foreign key (userID) references users(userID),
     foreign key (productID) references product(productID)

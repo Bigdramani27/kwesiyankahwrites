@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('../controllers/customer_controller.php');
+$customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $emails = isset($_SESSION['email']) ? $_SESSION['email'] : "";
 if ($emails == true) {
   header('Location: ../index.php');
@@ -496,14 +497,20 @@ if ($emails == true) {
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -657,7 +664,7 @@ if ($emails == true) {
                               id="menu-item-1191"
                               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1191">
                               <a href="#"><span class="menu-title">Categories</span></a>
-                             <ul class="sub-menu">
+                              <ul class="sub-menu">
                                 <li
                                   id="menu-item-5751"
                                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5751">
@@ -691,7 +698,7 @@ if ($emails == true) {
                                   <a href="../categories/index.php?category=<?php echo urlencode('Journal Articles'); ?>"><span class="menu-title">Journal Articles
                                     </span></a>
                                 </li>
-                                </ul>
+                              </ul>
                             </li>
                             <li
                               id="menu-item-2842"
@@ -826,7 +833,7 @@ if ($emails == true) {
                         </p>
                         <p
                           class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                          <label >Last Name &nbsp;<span class="required">*</span></label>
+                          <label>Last Name &nbsp;<span class="required">*</span></label>
                           <input
                             type="text"
                             class="woocommerce-Input woocommerce-Input--text input-text"
@@ -836,7 +843,7 @@ if ($emails == true) {
                         </p>
                         <p
                           class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                          <label >Email address &nbsp;<span class="required">*</span></label>
+                          <label>Email address &nbsp;<span class="required">*</span></label>
                           <input
                             type="email"
                             class="woocommerce-Input woocommerce-Input--text input-text"
@@ -926,7 +933,7 @@ if ($emails == true) {
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../index.php"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -937,7 +944,7 @@ if ($emails == true) {
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php"> Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1034,7 +1041,7 @@ if ($emails == true) {
         </div>
       </div>
     </div>
-  <footer>
+    <footer>
       <div class="footer-width-fixer">
         <div
           data-elementor-type="wp-post"
@@ -1139,7 +1146,7 @@ if ($emails == true) {
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>

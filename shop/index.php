@@ -176,11 +176,6 @@ $total = total_amount_controller($customer_id);
     media="all" />
   <link
     rel="stylesheet"
-    id="bookory-dokan-style-css"
-    href="../wp-content/themes/bookory/assets/css/dokan/dokan3601.css?ver=2.2.0"
-    media="all" />
-  <link
-    rel="stylesheet"
     id="magnific-popup-css"
     href="../wp-content/themes/bookory/assets/css/libs/magnific-popup3601.css?ver=2.2.0"
     media="all" />
@@ -193,11 +188,6 @@ $total = total_amount_controller($customer_id);
     rel="stylesheet"
     id="woosq-frontend-css"
     href="../wp-content/plugins/woo-smart-quick-view/assets/css/frontendeda1.css?ver=4.1.4"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="dokan-modal-css"
-    href="../wp-content/plugins/dokan-lite/assets/vendors/izimodal/iziModal.mina71e.css?ver=1732076614"
     media="all" />
   <link
     rel="stylesheet"
@@ -241,11 +231,6 @@ $total = total_amount_controller($customer_id);
     media="all" />
   <link
     rel="stylesheet"
-    id="bookory-child-style-css"
-    href="../wp-content/themes/demo-child/style8a54.css?ver=1.0.0"
-    media="all" />
-  <link
-    rel="stylesheet"
     id="google-fonts-1-css"
     href="https://fonts.googleapis.com/css?family=Sora%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=auto&amp;ver=6.7.2"
     media="all" />
@@ -264,7 +249,6 @@ $total = total_amount_controller($customer_id);
     id="elementor-icons-fa-regular-css"
     href="../wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min52d5.css?ver=5.15.3"
     media="all" />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
 
   <script
     src="../wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1"
@@ -423,14 +407,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -548,7 +538,7 @@ $total = total_amount_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -740,28 +730,49 @@ $total = total_amount_controller($customer_id);
                             alt=""
                             decoding="async" />
                         </div>
-                        <div class="group-action">
-                          <div class="shop-action vertical">
-                            <form id='wishlist-<?php echo $product['productID'] ?>'>
-                              <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
-                              <button type="submit"
-                                class="woosw-btn woosw-btn-111">
-                                Add to wishlist
-                              </button>
-                            </form>
-                            <div class="opal-add-to-cart-button">
-                              <a
-                                href=""
-                                data-sku="<?php echo $product['productID']; ?>"
-                                id="sku-<?php echo $product['productID']; ?>"
-                                class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                              <span
-                                id="woocommerce_loop_add_to_cart_link_describedby_77"
-                                class="screen-reader-text">
-                              </span>
+                        <?php if ($customer_id != 0) { ?>
+                          <div class="group-action">
+                            <div class="shop-action vertical">
+                              <form id='wishlist-<?php echo $product['productID'] ?>'>
+                                <input type="hidden" name="SKU" value="<?php echo $product['productID'] ?>">
+                                <button type="submit"
+                                  class="woosw-btn woosw-btn-111">
+                                  Add to wishlist
+                                </button>
+                              </form>
+
+                              <div class="opal-add-to-cart-button">
+                                <a
+                                  data-sku="<?php echo $product['productID']; ?>"
+                                  id="sku-<?php echo $product['productID']; ?>"
+                                  href=""
+                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                <span
+                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                  class="screen-reader-text">
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        <?php } else { ?>
+                          <div class="group-action">
+                            <div class="shop-action vertical">
+                              <a href="../my-account/index.php"
+                                class="woosw-btn woosw-btn-111">
+                                Add to wishlist
+                              </a>
+                              <div class="opal-add-to-cart-button">
+                                <a
+                                  href="../my-account/index.php"
+                                  class="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
+                                <span
+                                  id="woocommerce_loop_add_to_cart_link_describedby_111"
+                                  class="screen-reader-text">
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        <?php  } ?>
                         <a
                           href="../product/index.php?SKU=<?php echo $product['productID'] ?>"
                           class="woocommerce-LoopProduct-link woocommerce-loop-product__link"></a>
@@ -907,7 +918,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../index.php"
+                          href="index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -918,7 +929,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php"> Shop </a>
+                          <a href="index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -940,7 +951,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../my-account/index.php"
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -951,7 +962,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../my-account/index.php"> Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1120,7 +1131,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1179,12 +1190,12 @@ $total = total_amount_controller($customer_id);
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1369,22 +1380,22 @@ $total = total_amount_controller($customer_id);
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1411,11 +1422,11 @@ $total = total_amount_controller($customer_id);
           <ul id="menu-main-menu" class="menu">
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="index.php">Home</a>
+              <a href="../index.php">Home</a>
             </li>
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="shop/index.php">Shop</a>
+              <a href="index.php">Shop</a>
             </li>
             <li
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1191">
@@ -1465,6 +1476,11 @@ $total = total_amount_controller($customer_id);
     </div>
   </div>
   <div class="bookory-overlay"></div>
+  <div id="bookory-canvas-filter" class="bookory-canvas-filter">
+    <span class="filter-close">HIDE FILTER</span>
+    <div class="bookory-canvas-filter-wrap"></div>
+  </div>
+  <div class="bookory-overlay-filter"></div>
   <div class="site-search-popup">
     <div class="site-search-popup-wrap">
       <div class="site-search ajax-search">
@@ -1515,7 +1531,7 @@ $total = total_amount_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
- <div class="site-header-cart-side">
+  <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>
@@ -1561,13 +1577,14 @@ $total = total_amount_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
     </div>
   </div>
   <div class="cart-side-overlay"></div>
+
   <link
     rel="stylesheet"
     id="wc-blocks-style-css"
@@ -1705,9 +1722,6 @@ $total = total_amount_controller($customer_id);
     defer
     async
     id="revmin-js"></script>
-  <script
-    src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
   <script
     src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>

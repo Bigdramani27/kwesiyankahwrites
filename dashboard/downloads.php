@@ -1,3 +1,17 @@
+<?php
+session_start();
+require('../controllers/customer_controller.php');
+require('../controllers/product_controller.php');
+require('../controllers/cart_controller.php');
+$customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
+
+$count = count_wishlist_for_user_controller($customer_id);
+$cart = count_user_cart_controller($customer_id);
+$total = total_amount_controller($customer_id);
+if ($customer_id == 0) {
+  header("Location: ../my-account/index.php");
+}
+?>
 <html lang="en-US">
 
 <head>
@@ -6,10 +20,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <title>Heavenly Bodies &#8211; Bookory</title>
-  <meta name="robots" content="max-image-preview:large" />
-  <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
-
+  <title>Prof Kwesi Yankah Book Store</title>
   <link
     rel="stylesheet"
     id="dashicons-css"
@@ -498,14 +509,20 @@
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -583,35 +600,57 @@
                           <div class="elementor-widget-container">
                             <div class="elementor-header-group-wrapper">
                               <div class="header-group-action">
-                                <div class="site-header-wishlist">
-                                  <div class="site-header-account">
+                                <?php if ($customer_id != 0) {  ?>
+                                  <div class="site-header-wishlist">
+                                    <div class="site-header-account">
+                                      <a href="">
+                                        <i class="bookory-icon-account"></i>
+                                      </a>
+                                      <div class="account-dropdown"></div>
+                                    </div>
+                                  </div>
+                                <?php } else { ?>
+                                  <div class="site-header-wishlist">
                                     <a
-                                      href="">
+                                      class="header-wishlist"
+                                      href="../my-account/index.php">
                                       <i class="bookory-icon-account"></i>
                                     </a>
-                                    <div class="account-dropdown"></div>
                                   </div>
-                                </div>
+                                <?php   } ?>
 
                                 <div class="site-header-wishlist">
-                                  <a
-                                    class="header-wishlist"
-                                    href="../wishlist/index.php">
-                                    <i class="bookory-icon-heart-1"></i>
-                                    <span class="count">15</span>
-                                  </a>
+                                  <?php if ($customer_id != 0) {  ?>
+                                    <a
+                                      class="header-wishlist"
+                                      href="../wishlist/index.php">
+                                      <i class="bookory-icon-heart-1"></i>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                    </a>
+                                  <?php } else { ?>
+                                    <a
+                                      class="header-wishlist"
+                                      href="../my-account/index.php">
+                                      <i class="bookory-icon-heart-1"></i>
+                                    </a>
+                                  <?php } ?>
                                 </div>
 
                                 <div class="site-header-cart menu">
-                                  <a
-                                    class="cart-contents"
-                                    href="../../cart/index.php"
-                                    title="View your shopping cart">
-                                    <span class="count">3</span>
-                                    <span
-                                      class="woocommerce-Price-amount amount"><bdi><span
-                                          class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                                  </a>
+                                  <?php if ($customer_id != 0) {  ?>
+                                    <a
+                                      class="cart-contents"
+                                      href="../cart/index.php"
+                                      title="View your shopping cart">
+                                      <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                                    </a>
+                                  <?php } else { ?>
+                                    <a
+                                      class="cart-contents"
+                                      href="../my-account/index.php"
+                                      title="View your shopping cart">
+                                    </a>
+                                  <?php } ?>
                                 </div>
                               </div>
                             </div>
@@ -788,28 +827,28 @@
                       <li
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads is-active">
                         <a
-                          href="downloads.html">
+                          href="downloads.php">
                           Downloads
                         </a>
                       </li>
                       <li
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address">
                         <a
-                          href="address.html">
+                          href="address.php">
                           Addresses
                         </a>
                       </li>
                       <li
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
                         <a
-                          href="account-details.html">
+                          href="account-details.php">
                           Account details
                         </a>
                       </li>
                       <li
                         class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout">
                         <a
-                          href="logout.php">
+                          href="../logout.php">
                           Log out
                         </a>
                       </li>
@@ -1026,8 +1065,7 @@
           class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="5c1c1fa"
           data-element_type="section"
-          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-          style="width: 753px; left: 0px">
+          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
           <div class="elementor-container elementor-column-gap-no">
             <div
               class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
@@ -1043,7 +1081,7 @@
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="https://demo2.pavothemes.com/bookory/"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1054,9 +1092,7 @@
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="https://demo2.pavothemes.com/bookory/">
-                            Shop
-                          </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1078,7 +1114,7 @@
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1089,10 +1125,7 @@
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Account
-                          </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1135,7 +1168,7 @@
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href=""
+                          href="../wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -1144,10 +1177,7 @@
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a
-                            href="">
-                            Wishlist
-                          </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -1159,7 +1189,7 @@
         </div>
       </div>
     </div>
-  <footer>
+    <footer>
       <div class="footer-width-fixer">
         <div
           data-elementor-type="wp-post"
@@ -1264,7 +1294,7 @@
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1323,12 +1353,12 @@
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1509,39 +1539,34 @@
   </div>
   <!-- #page -->
 
-  <div class="account-wrap d-none">
-    <div class="account-inner dashboard">
-      <ul class="account-dashboard">
-        <li>
-          <a
-            href="index.php"
-            title="Orders">Orders</a>
-        </li>
-        <li>
-          <a
-            href="downloads.html"
-            title="Downloads">Downloads</a>
-        </li>
-        <li>
-          <a
-            href="address"
-            title="Edit Address">Edit Address</a>
-        </li>
-        <li>
-          <a
-            href="account-details.html"
-            title="Account Details">Account Details</a>
-        </li>
-        <li>
-          <a
-            title=""
-            class="tips"
-            href="logout.php"
-            data-original-title="Log out">Log Out</a>
-        </li>
-      </ul>
+  <?php if ($customer_id != 0) { ?>
+    <div class="account-wrap d-none">
+      <div class="account-inner dashboard">
+        <ul class="account-dashboard">
+          <li>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
+          </li>
+          <li>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
+          </li>
+          <li>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
+          </li>
+          <li>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
+          </li>
+          <li>
+            <a
+              title=""
+              class="tips"
+              href="../logout.php"
+              data-original-title="Log out">Log Out</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  <?php } ?>
+
   <div class="bookory-mobile-nav">
     <div class="menu-scroll-mobile">
       <a href="#" class="mobile-nav-close"><i class="bookory-icon-times"></i></a>
@@ -1561,11 +1586,11 @@
           <ul id="menu-main-menu" class="menu">
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="index.php">Home</a>
+              <a href="../index.php">Home</a>
             </li>
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="shop/index.php">Shop</a>
+              <a href="../shop/index.php">Shop</a>
             </li>
             <li
               class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1191">
@@ -1605,6 +1630,20 @@
                     </span></a>
                 </li>
               </ul>
+            </li>
+            <li
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
+              <a href="../author/index.php">Author</a>
+            </li>
+            <li
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
+              <a href="faq/index.php">FAQ</a>
+            </li>
+            <li
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
+              <a href="../contact/index.php">Contact</a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
@@ -1669,41 +1708,46 @@
       <div class="widget_shopping_cart_content">
         <div class="woocommerce-mini-cart-scroll">
           <ul class="woocommerce-mini-cart cart_list product_list_widget">
-            <li class="woocommerce-mini-cart-item mini_cart_item">
-              <a
-                href=""
-                class="remove remove_from_cart_button"
-                aria-label="Remove this item"
-                data-product_id="99"
-                data-cart_item_key="ac627ab1ccbdb62ec96e702f07f6425b"
-                data-product_sku="B87309287">×</a>
-              <a href=""><img
-                  width="600"
-                  height="840"
-                  src="../wp-content/uploads/images/29.jpg"
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  alt=""
-                  decoding="async" />Treachery: Alpha Colony Book 8</a>
-              <dl class="variation">
-                <dt class="variation-Vendor">Vendor:</dt>
-                <dd class="variation-Vendor">
-                  <p>Gregstore</p>
-                </dd>
-              </dl>
-              <span class="quantity">1 ×
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span></span>
-            </li>
+            <?php $carts = select_user_cart_controller($customer_id);
+            foreach ($carts as $all) {
+            ?>
+              <li class="woocommerce-mini-cart-item mini_cart_item">
+                <a
+                  href="../action/delete_from_cart.php?cart=<?php echo $all['cartID'] ?>"
+                  class="remove remove_from_cart_button"
+                  data-product_sku="B87309287">×</a>
+                <a href="../product/index.php?SKU=<?php echo $all['productID'] ?>"><img
+                    style="height: 85px;"
+                    src="../wp-content/uploads/books/<?php echo $all['productImage'] ?>"
+                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                    alt=""
+                    decoding="async" /><?php echo $all['productName'] ?></a>
+                <dl class="variation">
+                  <dt class="variation-Vendor">Category:</dt>
+                  <dd class="variation-Vendor">
+                    <p><?php echo $all['productCategory'] ?></p>
+                  </dd>
+                </dl>
+                <span class="quantity"><?php echo $all['quantity'] ?> ×
+                  <span class="woocommerce-Price-amount amount" style="color:black"><span class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'], 2) ?></span></span>
+              </li>
+            <?php }
+            if (empty($carts)) { ?>
+              <p class="woocommerce-mini-cart__empty-message">No books in the cart.</p>
+            <?php   }
+            ?>
           </ul>
         </div>
+        <?php if (!empty($carts)) { ?>
+          <p class="woocommerce-mini-cart__total total">
+            <strong>Subtotal:</strong>
+            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">₵ <?php echo $total['Amount'] ?></span></span>
+          </p>
 
-        <p class="woocommerce-mini-cart__total total">
-          <strong>Subtotal:</strong>
-          <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">₵</span>569.00</bdi></span>
-        </p>
-
-        <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
-        </p>
+          <p class="woocommerce-mini-cart__buttons buttons">
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          </p>
+        <?php } ?>
       </div>
     </div>
   </div>

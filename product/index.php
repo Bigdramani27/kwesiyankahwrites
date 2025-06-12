@@ -519,14 +519,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -644,7 +650,7 @@ $total = total_amount_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -875,13 +881,21 @@ $total = total_amount_controller($customer_id);
                           value="1" />
                       </div>
                     </div>
-
-                    <button
-                      type="submit"
-                      name="add-to-cart"
-                      class="single_add_to_cart_button button alt">
-                      Add to cart
-                    </button>
+                    <?php if ($customer_id != 0) { ?>
+                      <button
+                        type="submit"
+                        name="add-to-cart"
+                        class="single_add_to_cart_button button alt">
+                        Add to cart
+                      </button>
+                    <?php } else { ?>
+                      <a
+                        href="../my-account/index.php"
+                        name="add-to-cart"
+                        class="single_add_to_cart_button button alt">
+                        Add to cart
+                      </a>
+                    <?php  } ?>
                   </form>
 
                   <div class="product_meta">
@@ -1100,7 +1114,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../index.php"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1111,7 +1125,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php"> Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1212,346 +1226,134 @@ $total = total_amount_controller($customer_id);
       <div class="footer-width-fixer">
         <div
           data-elementor-type="wp-post"
-          data-elementor-id="329"
-          class="elementor elementor-329">
-          <section
-            class="elementor-section elementor-top-section elementor-element elementor-element-8c67d70 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-            data-id="8c67d70"
+          data-elementor-id="751"
+          class="elementor elementor-751">
+          <div
+            class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="5c1c1fa"
             data-element_type="section"
-            data-settings='{"background_background":"classic"}'>
+            data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
             <div class="elementor-container elementor-column-gap-no">
               <div
-                class="elementor-column elementor-col-20 elementor-top-column elementor-element elementor-element-09338ca"
-                data-id="09338ca"
+                class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
+                data-id="0feafc9"
                 data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
+                <div class="elementor-widget-wrap elementor-element-populated">
                   <div
-                    class="elementor-element elementor-element-dd4fd10 elementor-widget elementor-widget-site-logo"
-                    data-id="dd4fd10"
+                    class="elementor-element elementor-element-16cf748 elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                    data-id="16cf748"
                     data-element_type="widget"
-                    data-settings='{"align":"center","width":{"unit":"%","size":"","sizes":[]},"width_laptop":{"unit":"px","size":"","sizes":[]},"width_tablet_extra":{"unit":"px","size":"","sizes":[]},"width_tablet":{"unit":"%","size":"","sizes":[]},"width_mobile_extra":{"unit":"px","size":"","sizes":[]},"width_mobile":{"unit":"%","size":"","sizes":[]},"space":{"unit":"%","size":"","sizes":[]},"space_laptop":{"unit":"px","size":"","sizes":[]},"space_tablet_extra":{"unit":"px","size":"","sizes":[]},"space_tablet":{"unit":"%","size":"","sizes":[]},"space_mobile_extra":{"unit":"px","size":"","sizes":[]},"space_mobile":{"unit":"%","size":"","sizes":[]},"image_border_radius":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"image_border_radius_laptop":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"image_border_radius_tablet_extra":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"image_border_radius_tablet":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"image_border_radius_mobile_extra":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"image_border_radius_mobile":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding_laptop":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding_tablet_extra":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding_tablet":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding_mobile_extra":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_padding_mobile":{"unit":"px","top":"","right":"","bottom":"","left":"","isLinked":true},"caption_space":{"unit":"px","size":0,"sizes":[]},"caption_space_laptop":{"unit":"px","size":"","sizes":[]},"caption_space_tablet_extra":{"unit":"px","size":"","sizes":[]},"caption_space_tablet":{"unit":"px","size":"","sizes":[]},"caption_space_mobile_extra":{"unit":"px","size":"","sizes":[]},"caption_space_mobile":{"unit":"px","size":"","sizes":[]}}'
-                    data-widget_type="site-logo.default">
+                    data-widget_type="icon-box.default">
                     <div class="elementor-widget-container">
-                      <div class="hfe-site-logo">
-                        <a
-                          data-elementor-open-lightbox=""
-                          class="elementor-clickable"
-                          href="index.php">
-                          <div class="hfe-site-logo-set">
-                            <div class="hfe-site-logo-container">
-                              <img
-                                class="hfe-site-logo-img elementor-animation-"
-                                src="../wp-content/uploads/images/logo1.png"
-                                style="width: 180px; height: 150px"
-                                alt="default-logo" />
-                            </div>
-                          </div>
+                      <div class="elementor-icon-box-wrapper">
+                        <div class="elementor-icon-box-icon">
+                          <a
+                            href="shop/index.php"
+                            class="elementor-icon elementor-animation-"
+                            tabindex="-1">
+                            <i
+                              aria-hidden="true"
+                              class="bookory-icon- bookory-icon-home"></i>
+                          </a>
+                        </div>
+
+                        <div class="elementor-icon-box-content">
+                          <h3 class="elementor-icon-box-title">
+                            <a href="shop/index.php"> Shop </a>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-9d90670"
+                data-id="9d90670"
+                data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                  <div
+                    class="elementor-element elementor-element-62e085d elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                    data-id="62e085d"
+                    data-element_type="widget"
+                    data-widget_type="icon-box.default">
+                    <div class="elementor-widget-container">
+                      <div class="elementor-icon-box-wrapper">
+                        <div class="elementor-icon-box-icon">
+                          <a
+                            href="../dashboard/index.php"
+                            class="elementor-icon elementor-animation-"
+                            tabindex="-1">
+                            <i
+                              aria-hidden="true"
+                              class="bookory-icon- bookory-icon-account"></i>
+                          </a>
+                        </div>
+
+                        <div class="elementor-icon-box-content">
+                          <h3 class="elementor-icon-box-title">
+                            <a href="../dashboard/index.php"> Account </a>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6ed0632"
+                data-id="6ed0632"
+                data-element_type="column">
+                <div class="elementor-widget-wrap elementor-element-populated">
+                  <div
+                    class="elementor-element elementor-element-da94cbb elementor-widget elementor-widget-bookory-search"
+                    data-id="da94cbb"
+                    data-element_type="widget"
+                    data-widget_type="bookory-search.default">
+                    <div class="elementor-widget-container">
+                      <div class="site-header-search">
+                        <a href="#" class="button-search-popup">
+                          <i class="bookory-icon-search"></i>
+                          <span class="content">Search</span>
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="elementor-element elementor-element-597fc5e elementor-widget elementor-widget-text-editor"
-                    data-id="597fc5e"
-                    data-element_type="widget"
-                    data-widget_type="text-editor.default">
-                    <div class="elementor-widget-container">
-                      1418 River Drive, Suite 35<br />
-                      Cottonhall, CA 9622
-                    </div>
-                  </div>
                 </div>
               </div>
               <div
-                class="elementor-column elementor-col-20 elementor-top-column elementor-element elementor-element-1fc25d4"
-                data-id="1fc25d4"
+                class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-336d314"
+                data-id="336d314"
                 data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
+                <div class="elementor-widget-wrap elementor-element-populated">
                   <div
-                    class="elementor-element elementor-element-eaa5480 elementor-widget elementor-widget-heading"
-                    data-id="eaa5480"
+                    class="elementor-element elementor-element-2b02f7c elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                    data-id="2b02f7c"
                     data-element_type="widget"
-                    data-widget_type="heading.default">
+                    data-widget_type="icon-box.default">
                     <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        need help
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-7c7cb18 elementor-widget elementor-widget-heading"
-                    data-id="7c7cb18"
-                    data-element_type="widget"
-                    data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        +(233) 264 738 739
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-2c606c0 elementor-widget elementor-widget-text-editor"
-                    data-id="2c606c0"
-                    data-element_type="widget"
-                    data-widget_type="text-editor.default">
-                    <div class="elementor-widget-container">
-                      <p>
-                        Monday – Friday: 8:00 AM-5:00 PM<br />Saturday: 9:00
-                        AM– 5:00 PM
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-296535d elementor-widget elementor-widget-heading"
-                    data-id="296535d"
-                    data-element_type="widget"
-                    data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="elementor-column elementor-col-20 elementor-top-column elementor-element elementor-element-b9645f5"
-                data-id="b9645f5"
-                data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
-                  <div
-                    class="elementor-element elementor-element-ce775ca elementor-widget elementor-widget-heading"
-                    data-id="ce775ca"
-                    data-element_type="widget"
-                    data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        Useful Links
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-bd3910a elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                    data-id="bd3910a"
-                    data-element_type="widget"
-                    data-widget_type="icon-list.default">
-                    <div class="elementor-widget-container">
-                      <ul class="elementor-icon-list-items">
-                        <li class="elementor-icon-list-item">
-                          <a href="../index.php">
-                            <span class="elementor-icon-list-text">Home</span>
+                      <div class="elementor-icon-box-wrapper">
+                        <div class="elementor-icon-box-icon">
+                          <a
+                            href="wishlist/index.php"
+                            class="elementor-icon elementor-animation-"
+                            tabindex="-1">
+                            <i aria-hidden="true" class="far fa-heart"></i>
                           </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../shop/index.php">
-                            <span class="elementor-icon-list-text">Shop</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../author/index.php">
-                            <span class="elementor-icon-list-text">
-                              Author
-                            </span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../faq/index.php">
-                            <span class="elementor-icon-list-text">FAQ</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../contact/index.php">
-                            <span class="elementor-icon-list-text">Contact</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
-                            <span class="elementor-icon-list-text">Privacy</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
-                            <span class="elementor-icon-list-text">Terms and Conditions</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                        </div>
 
-              <div
-                class="elementor-column elementor-col-20 elementor-top-column elementor-element elementor-element-7da7578"
-                data-id="7da7578"
-                data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
-                  <div
-                    class="elementor-element elementor-element-a2cd9cb elementor-widget elementor-widget-heading"
-                    data-id="a2cd9cb"
-                    data-element_type="widget"
-                    data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        Genre
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-e620e02 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
-                    data-id="e620e02"
-                    data-element_type="widget"
-                    data-widget_type="icon-list.default">
-                    <div class="elementor-widget-container">
-                      <ul class="elementor-icon-list-items">
-                        <li class="elementor-icon-list-item">
-                          <a
-                            href="../genre/index.php?genre=<?php echo urlencode('Academics'); ?>">
-                            <span class="elementor-icon-list-text">Academics</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a
-                            href="../genre/index.php?genre=<?php echo urlencode('Media'); ?>">
-                            <span class="elementor-icon-list-text">
-                              Media</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../genre/index.php?genre=<?php echo urlencode('Edited Works'); ?>">
-                            <span class="elementor-icon-list-text">Edited Works
-                            </span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="elementor-column elementor-col-20 elementor-top-column elementor-element elementor-element-c48775c"
-                data-id="c48775c"
-                data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
-                  <div
-                    class="elementor-element elementor-element-dbb9ba4 elementor-widget elementor-widget-heading"
-                    data-id="dbb9ba4"
-                    data-element_type="widget"
-                    data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                      <h2
-                        class="elementor-heading-title elementor-size-default">
-                        Categories
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="elementor-element elementor-element-8623ab1 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list">
-                    <div class="elementor-widget-container">
-                      <ul class="elementor-icon-list-items">
-                        <li class="elementor-icon-list-item">
-                          <a href="../categories/index.php?category=<?php echo urlencode('Sole-Authored Books'); ?>">
-                            <span class="elementor-icon-list-text">Sole-Authored Books
-                            </span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a
-                            href="../categories/index.php?category=<?php echo urlencode('Monographs'); ?>">
-                            <span class="elementor-icon-list-text">Monographs</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../categories/index.php?category=<?php echo urlencode('Edited Volumes'); ?>">
-                            <span class="elementor-icon-list-text">Edited Volumes</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../categories/index.php?category=<?php echo urlencode('On the Author’s Work'); ?>">
-                            <span class="elementor-icon-list-text">On the Author’s Work</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../categories/index.php?category=<?php echo urlencode('Book Chapters'); ?>">
-                            <span class="elementor-icon-list-text">Book Chapters</span>
-                          </a>
-                        </li>
-                        <li class="elementor-icon-list-item">
-                          <a href="../categories/index.php?category=<?php echo urlencode('Journal Articles'); ?>">
-                            <span class="elementor-icon-list-text">Journal Articles</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section
-            class="elementor-section elementor-top-section elementor-element elementor-element-ec0b2e5 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-            data-id="ec0b2e5"
-            data-element_type="section"
-            data-settings='{"background_background":"classic"}'>
-            <div class="elementor-container elementor-column-gap-no">
-              <div
-                class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-ee76e3e"
-                data-id="ee76e3e"
-                data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
-                  <div
-                    class="elementor-element elementor-element-08d2019 elementor-widget elementor-widget-text-editor"
-                    data-id="08d2019"
-                    data-element_type="widget"
-                    data-widget_type="text-editor.default">
-                    <div class="elementor-widget-container">
-                      <div>
-                        Copyright © 2025
-                        <a style="color: var(--primary)" href="index.php">Kwesi</a>. All rights reserved.
+                        <div class="elementor-icon-box-content">
+                          <h3 class="elementor-icon-box-title">
+                            <a href="wishlist/index.php"> Wishlist </a>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-77cfab4"
-                data-id="77cfab4"
-                data-element_type="column">
-                <div
-                  class="elementor-widget-wrap elementor-element-populated">
-                  <div
-                    class="elementor-element elementor-element-79a0236 elementor-widget elementor-widget-image"
-                    data-id="79a0236"
-                    data-element_type="widget"
-                    data-widget_type="image.default">
-                    <div class="elementor-widget-container">
-                      <img
-                        width="348"
-                        height="26"
-                        src="../wp-content/uploads/images/footer_img.png"
-                        class="attachment-full size-full wp-image-593"
-                        alt=""
-                        srcset="
-                            ../wp-content/uploads/images/footer_img.png        348w,
-                           ../wp-content/uploads/images/footer_img-300x22.png 300w
-                          "
-                        sizes="(max-width: 348px) 100vw, 348px" />
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     </footer>
@@ -1593,22 +1395,22 @@ $total = total_amount_controller($customer_id);
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1663,7 +1465,7 @@ $total = total_amount_controller($customer_id);
                 </li>
                 <li
                   class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6218">
-                  <a href="404.html">Book Chapters</a>
+                  <a href="404.php">Book Chapters</a>
                 </li>
                 <li
                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3156">

@@ -82,34 +82,35 @@ class Cart extends Connection
         return $this->query("delete from wishlist where productID = '$productID'");
     }
 
-      //delete from wishlist for a user
+    //delete from wishlist for a user
     function delete_product_from_wishlist($productID, $userID)
     {
         return $this->query("delete from wishlist where productID = '$productID' and userID = '$userID'");
     }
 
-       //checking if user wishlist exists based on productID and userID
+    //checking if user wishlist exists based on productID and userID
     function select_user_wishlist_based_on_item($productID, $userID)
     {
         return $this->fetchOne("select * from wishlist where productID = '$productID' and userID = '$userID'");
     }
 
-        //select user wishlist
-    function select_user_wishlist( $userID)
+    //select user wishlist
+    function select_user_wishlist($userID)
     {
         return $this->fetch("select * from wishlist w inner join product p on w.productID = p.productID where w.userID = '$userID'");
     }
 
     //count wishlist for user 
-   function count_wishlist_for_user($userID)
+    function count_wishlist_for_user($userID)
     {
         return $this->count("select * from wishlist where userID = '$userID'");
     }
 
-  //delete from cart for admin
+    //delete from cart for admin
     function delete_item_for_admin($productID)
     {
         return $this->query("delete from cart where productID = '$productID'");
     }
+
 
 }

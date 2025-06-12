@@ -5,7 +5,7 @@ require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $count = count_wishlist_for_user_controller($customer_id);
-$cart =count_user_cart_controller($customer_id);
+$cart = count_user_cart_controller($customer_id);
 $total = total_amount_controller($customer_id);
 ?>
 <!doctype html>
@@ -268,14 +268,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -377,7 +383,7 @@ $total = total_amount_controller($customer_id);
                                       class="header-wishlist"
                                       href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -393,7 +399,7 @@ $total = total_amount_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
                                       <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
@@ -565,10 +571,8 @@ $total = total_amount_controller($customer_id);
                         data-widget_type="google_maps.default">
                         <div class="elementor-widget-container">
                           <div class="elementor-custom-embed">
-                            <iframe loading="lazy"
-                              src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
-                              title="London Eye, London, United Kingdom"
-                              aria-label="London Eye, London, United Kingdom"></iframe>
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.6718720908116!2d-0.22249812540474756!3d5.760275194222136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf767731dfa583%3A0xc30b0f51f3b91add!2sAshesi%20University!5e0!3m2!1sen!2sgh!4v1749722737716!5m2!1sen!2sgh" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -605,7 +609,7 @@ $total = total_amount_controller($customer_id);
                               <ul></ul>
                             </div>
                             <form
-                              action="https://demo2.pavothemes.com/bookory/contact/#wpcf7-f6-p208-o1"
+                              action=""
                               method="post" class="wpcf7-form init"
                               aria-label="Contact form" novalidate="novalidate"
                               data-status="init">
@@ -742,7 +746,7 @@ $total = total_amount_controller($customer_id);
                                     src="../wp-content/uploads/images/contact_pic_3.png"
                                     class="attachment-full size-full wp-image-559"
                                     alt=""
-                                    srcset="https://demo2.pavothemes.com/bookory/wp-content/uploads/images/contact_pic_3.png 410w, https://demo2.pavothemes.com/bookory/wp-content/uploads/images/contact_pic_3-300x146.png 300w"
+                                    srcset="../wp-content/uploads/images/contact_pic_3.png 410w, ../wp-content/uploads/images/contact_pic_3-300x146.png 300w"
                                     sizes="(max-width: 410px) 100vw, 410px" />
                                 </div>
                               </div>
@@ -761,9 +765,8 @@ $total = total_amount_controller($customer_id);
                                 <div class="elementor-widget-container">
                                   <p>3164 N Delaware Rd Milan, Indiana(IN),
                                     47031<br />Hotline: +(233) 2500 888 33<br /><a
-                                      href="https://demo2.pavothemes.com/cdn-cgi/l/email-protection"
-                                      class="__cf_email__"
-                                      data-cfemail="84f7f1f4f4ebf6f0c4e1fce5e9f4e8e1aae7ebe9">[email&#160;protected]</a>
+                                      href=""
+                                      class="__cf_email__"></a>
                                   </p>
                                 </div>
                               </div>
@@ -799,77 +802,92 @@ $total = total_amount_controller($customer_id);
       </div><!-- .col-full -->
     </div><!-- #content -->
 
-    <div class='footer-width-fixer'>
-      <div data-elementor-type="wp-post" data-elementor-id="751" class="elementor elementor-751">
-        <div class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-          data-id="5c1c1fa" data-element_type="section"
-          data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+    <div class="footer-width-fixer">
+      <div
+        data-elementor-type="wp-post"
+        data-elementor-id="751"
+        class="elementor elementor-751">
+        <div
+          class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+          data-id="5c1c1fa"
+          data-element_type="section"
+          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
           <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
-              data-id="0feafc9" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
+              data-id="0feafc9"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-16cf748 elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="16cf748" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-16cf748 elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="16cf748"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href="../index.php" class="elementor-icon elementor-animation-"
+                        <a
+                          href="../shop/index.php"
+                          class="elementor-icon elementor-animation-"
                           tabindex="-1">
-                          <i aria-hidden="true" class="bookory-icon- bookory-icon-home"></i>
+                          <i
+                            aria-hidden="true"
+                            class="bookory-icon- bookory-icon-home"></i>
                         </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="../index.php">
-                            Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-9d90670"
-              data-id="9d90670" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-9d90670"
+              data-id="9d90670"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-62e085d elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="62e085d" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-62e085d elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="62e085d"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href="../my-account/index.php"
-                          class="elementor-icon elementor-animation-" tabindex="-1">
-                          <i aria-hidden="true"
-                            class="bookory-icon- bookory-icon-account"></i> </a>
+                        <a
+                          href="../dashboard/index.php"
+                          class="elementor-icon elementor-animation-"
+                          tabindex="-1">
+                          <i
+                            aria-hidden="true"
+                            class="bookory-icon- bookory-icon-account"></i>
+                        </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="../my-account/index.php">
-                            Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6ed0632"
-              data-id="6ed0632" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6ed0632"
+              data-id="6ed0632"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-da94cbb elementor-widget elementor-widget-bookory-search"
-                  data-id="da94cbb" data-element_type="widget"
+                <div
+                  class="elementor-element elementor-element-da94cbb elementor-widget elementor-widget-bookory-search"
+                  data-id="da94cbb"
+                  data-element_type="widget"
                   data-widget_type="bookory-search.default">
                   <div class="elementor-widget-container">
                     <div class="site-header-search">
@@ -882,30 +900,32 @@ $total = total_amount_controller($customer_id);
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-336d314"
-              data-id="336d314" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-336d314"
+              data-id="336d314"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-2b02f7c elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="2b02f7c" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-2b02f7c elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="2b02f7c"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href="../wishlist/index.php"
-                          class="elementor-icon elementor-animation-" tabindex="-1">
-                          <i aria-hidden="true" class="far fa-heart"></i> </a>
+                        <a
+                          href="../wishlist/index.php"
+                          class="elementor-icon elementor-animation-"
+                          tabindex="-1">
+                          <i aria-hidden="true" class="far fa-heart"></i>
+                        </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="../wishlist/index.php">
-                            Wishlist </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -1020,7 +1040,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1269,22 +1289,22 @@ $total = total_amount_controller($customer_id);
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1424,7 +1444,7 @@ $total = total_amount_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
- <div class="site-header-cart-side">
+  <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>

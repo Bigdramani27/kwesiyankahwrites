@@ -7,6 +7,12 @@ $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "0";
 $count = count_wishlist_for_user_controller($customer_id);
 $cart = count_user_cart_controller($customer_id);
 $total = total_amount_controller($customer_id);
+if (empty($cart)) {
+  header("Location: ../cart/index.php");
+}
+if ($customer_id == 0) {
+  header("Location: ../my-account/index.php");
+}
 ?>
 <html lang="en-US">
 
@@ -16,7 +22,7 @@ $total = total_amount_controller($customer_id);
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
-  <title>Checkout &#8211; Bookory</title>
+  <title>Prof Kwesi Yankah Book Store</title>
   <link
     rel="stylesheet"
     id="dashicons-css"
@@ -264,7 +270,8 @@ $total = total_amount_controller($customer_id);
   <script
     src="../wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1"
     id="jquery-migrate-js"></script>
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
 
 </head>
 
@@ -395,14 +402,20 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-header-group-wrapper">
                       <div class="header-group-action">
                         <div class="site-header-cart menu">
-                          <a
-                            class="cart-contents"
-                            href="../../cart/index.php"
-                            title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
-                          </a>
+                          <?php if ($customer_id != 0) {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../cart/index.php"
+                              title="View your shopping cart">
+                              <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                            </a>
+                          <?php } else {  ?>
+                            <a
+                              class="cart-contents"
+                              href="../my-account/index.php"
+                              title="View your shopping cart">
+                            </a>
+                          <?php  } ?>
                         </div>
                       </div>
                     </div>
@@ -498,13 +511,14 @@ $total = total_amount_controller($customer_id);
                                     </a>
                                   </div>
                                 <?php   } ?>
+
                                 <div class="site-header-wishlist">
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="header-wishlist"
                                       href="../wishlist/index.php">
                                       <i class="bookory-icon-heart-1"></i>
-                                     <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
+                                      <?php if ($count != 0) { ?> <span class="count"><?php echo $count ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -519,9 +533,9 @@ $total = total_amount_controller($customer_id);
                                   <?php if ($customer_id != 0) {  ?>
                                     <a
                                       class="cart-contents"
-                                      href="../../../cart/index.php"
+                                      href="../cart/index.php"
                                       title="View your shopping cart">
-                                     <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
+                                      <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                                     </a>
                                   <?php } else { ?>
                                     <a
@@ -692,66 +706,25 @@ $total = total_amount_controller($customer_id);
                   <div class="woocommerce-notices-wrapper"></div>
 
                   <div class="woocommerce-notices-wrapper"></div>
-                  <form
-                    name="checkout"
-                    method="post"
+                  <form id="paymentForms"
                     class="checkout woocommerce-checkout">
                     <div class="col2-set" id="customer_details">
                       <div class="col-1">
-                        <wc-order-attribution-inputs><input
-                            type="hidden"
-                            name="wc_order_attribution_source_type"
-                            value="typein" /><input
-                            type="hidden"
-                            name="wc_order_attribution_referrer"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_campaign"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_source"
-                            value="(direct)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_medium"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_content"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_id"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_term"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_source_platform"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_creative_format"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_utm_marketing_tactic"
-                            value="(none)" /><input
-                            type="hidden"
-                            name="wc_order_attribution_session_entry"
-                            value="../home-2/" /><input
-                            type="hidden"
-                            name="wc_order_attribution_session_start_time"
-                            value="2022-05-26 14:55:28" /><input
-                            type="hidden"
-                            name="wc_order_attribution_session_pages"
-                            value="29" /><input
-                            type="hidden"
-                            name="wc_order_attribution_session_count"
-                            value="3" /><input
-                            type="hidden"
-                            name="wc_order_attribution_user_agent"
-                            value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0" /></wc-order-attribution-inputs>
                         <div class="woocommerce-billing-fields">
                           <h3>Shipping details</h3>
-
                           <div
                             class="woocommerce-billing-fields__field-wrapper">
+                            <?php $shipping = select_one_shipping_userID_controller($customer_id);
+                            $fname = (!empty($shipping['firstName'])) ? $shipping['firstName'] : $_SESSION['firstName'];
+                            $lname = (!empty($shipping['lastName'])) ? $shipping['lastName'] : $_SESSION['lastName'];
+                            $street = (!empty($shipping['street'])) ? $shipping['street'] : "";
+                            $apartment = (!empty($shipping['apartment'])) ? $shipping['apartment'] : "";
+                            $city = (!empty($shipping['city'])) ? $shipping['city'] : "";
+                            $zip = (!empty($shipping['zip'])) ? $shipping['zip'] : "";
+                            $phone = (!empty($shipping['phone'])) ? $shipping['phone'] : "";
+                            ?>
+                            <input type="hidden" id="email" value=<?php echo $_SESSION['email'] ?>>
+                            <input type="hidden" id="amount" value=<?php echo $total['Amount'] ?>>
                             <p
                               class="form-row form-row-first validate-required"
                               id="billing_first_name_field"
@@ -761,12 +734,9 @@ $total = total_amount_controller($customer_id);
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
                                   class="input-text"
-                                  name="billing_first_name"
-                                  id="billing_first_name"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="given-name" /></span>
+                                  name="fname"
+                                  id="firstName"
+                                  value="<?php echo $fname ?>" required /></span>
                             </p>
                             <p
                               class="form-row form-row-last validate-required"
@@ -776,13 +746,9 @@ $total = total_amount_controller($customer_id);
                                   class="required"
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
-                                  class="input-text"
-                                  name="billing_last_name"
-                                  id="billing_last_name"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="family-name" /></span>
+                                  class="input-text" id="lastName"
+                                  name="lname"
+                                  value="<?php echo $lname ?>" required /></span>
                             </p>
                             <p
                               class="form-row form-row-wide address-field update_totals_on_change validate-required"
@@ -790,15 +756,11 @@ $total = total_amount_controller($customer_id);
                               data-priority="40">
                               <label for="billing_country" class="">Country &nbsp;<abbr
                                   class="required"
-                                  title="required">*</abbr></label><span class="woocommerce-input-wrapper"><select style="border-radius: 50px;"
-                                  name="billing_country"
-                                  id="billing_country"
+                                  title="required">*</abbr></label><span class="woocommerce-input-wrapper">
+                                <select style="border-radius: 50px;"
+                                  name="country"
                                   class="country_to_state country_select select2-hidden-accessible"
-                                  aria-required="true"
-                                  autocomplete="country"
-
-                                  tabindex="-1"
-                                  aria-hidden="true">
+                                  id="country">
                                   <option value="" disabled selected>
                                     Select a country / region…
                                   </option>
@@ -1086,7 +1048,7 @@ $total = total_amount_controller($customer_id);
                                   <option value="GB">
                                     United Kingdom (UK)
                                   </option>
-                                  <option value="US" selected="selected">
+                                  <option value="US">
                                     United States (US)
                                   </option>
                                   <option value="UM">
@@ -1123,13 +1085,9 @@ $total = total_amount_controller($customer_id);
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
                                   class="input-text"
-                                  name="billing_address_1"
-                                  id="billing_address_1"
-                                  placeholder="House number and street name"
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="address-line1"
-                                  data-placeholder="House number and street name" /></span>
+                                  name="street"
+                                  id="street"
+                                  value="<?php echo $street ?>" required /></span>
                             </p>
                             <p
                               class="form-row address-field form-row-wide"
@@ -1141,12 +1099,10 @@ $total = total_amount_controller($customer_id);
                                   class="optional">(optional)</span></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
                                   class="input-text"
-                                  name="billing_address_2"
-                                  id="billing_address_2"
+                                  name="apartment"
+                                  id="apartment"
                                   placeholder="Apartment, suite, unit, etc. (optional)"
-                                  value=""
-                                  autocomplete="address-line2"
-                                  data-placeholder="Apartment, suite, unit, etc. (optional)" /></span>
+                                  value="<?php echo $apartment ?>" /></span>
                             </p>
                             <p
                               class="form-row address-field validate-required form-row-wide"
@@ -1158,12 +1114,9 @@ $total = total_amount_controller($customer_id);
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
                                   class="input-text"
-                                  name="billing_city"
-                                  id="billing_city"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="address-level2" /></span>
+                                  name="city"
+                                  id="city"
+                                  value="<?php echo $city ?>" required /></span>
                             </p>
 
                             <p
@@ -1176,44 +1129,24 @@ $total = total_amount_controller($customer_id);
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="text"
                                   class="input-text"
-                                  name="billing_postcode"
-                                  id="billing_postcode"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="postal-code" /></span>
+                                  name="zip"
+                                  id="zip"
+                                  value="<?php echo $zip ?>" required /></span>
                             </p>
                             <p
                               class="form-row form-row-wide validate-required validate-phone"
                               id="billing_phone_field"
                               data-priority="100">
-                              <label for="billing_phone" class="">Phone&nbsp;<abbr
+                              <label for="billing_phone">Phone&nbsp;<abbr
                                   class="required"
                                   title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
                                   type="tel"
                                   class="input-text"
-                                  name="billing_phone"
-                                  id="billing_phone"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="tel" /></span>
-                            </p>
-                            <p
-                              class="form-row form-row-wide validate-required validate-email"
-                              id="billing_email_field"
-                              data-priority="110">
-                              <label for="billing_email" class="">Email address&nbsp;<abbr
-                                  class="required"
-                                  title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
-                                  type="email"
-                                  class="input-text"
-                                  name="billing_email"
-                                  id="billing_email"
-                                  placeholder=""
-                                  value=""
-                                  aria-required="true"
-                                  autocomplete="email username" /></span>
+                                  name="phone[main]"
+                                  id="phone"
+                                  size="100"
+                                  maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                  value="<?php echo $phone ?>" required /></span>
                             </p>
                           </div>
                         </div>
@@ -1259,77 +1192,34 @@ $total = total_amount_controller($customer_id);
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="cart_item">
-                              <td class="product-name">
-                                His Saving Grace&nbsp;
-                                <strong class="product-quantity">×&nbsp;1</strong>
-                                <dl class="variation">
-                                  <dt class="variation-Vendor">Vendor:</dt>
-                                  <dd class="variation-Vendor">
-                                    <p>Arlene</p>
-                                  </dd>
-                                </dl>
-                              </td>
-                              <td class="product-total">
-                                <span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>201.00</bdi></span>
-                              </td>
-                            </tr>
-                            <tr class="cart_item">
-                              <td class="product-name">
-                                The Good Egg&nbsp;
-                                <strong class="product-quantity">×&nbsp;6</strong>
-                                <dl class="variation">
-                                  <dt class="variation-Vendor">Vendor:</dt>
-                                  <dd class="variation-Vendor">
-                                    <p>Barone LLC.</p>
-                                  </dd>
-                                </dl>
-                              </td>
-                              <td class="product-total">
-                                <span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>1,736.28</bdi></span>
-                              </td>
-                            </tr>
-                            <tr class="cart_item">
-                              <td class="product-name">
-                                My Dearest Darkest&nbsp;
-                                <strong class="product-quantity">×&nbsp;1</strong>
-                                <dl class="variation">
-                                  <dt class="variation-Vendor">Vendor:</dt>
-                                  <dd class="variation-Vendor">
-                                    <p>Barone LLC.</p>
-                                  </dd>
-                                </dl>
-                              </td>
-                              <td class="product-total">
-                                <span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>914.53</bdi></span>
-                              </td>
-                            </tr>
-                            <tr class="cart_item">
-                              <td class="product-name">
-                                Annie Leibovitz: Wonderland&nbsp;
-                                <strong class="product-quantity">×&nbsp;1</strong>
-                                <dl class="variation">
-                                  <dt class="variation-Vendor">Vendor:</dt>
-                                  <dd class="variation-Vendor">
-                                    <p>Barone LLC.</p>
-                                  </dd>
-                                </dl>
-                              </td>
-                              <td class="product-total">
-                                <span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>316.15</bdi></span>
-                              </td>
-                            </tr>
+                            <?php $checkouts = select_user_cart_controller($customer_id);
+                            foreach ($checkouts as $all) {
+                            ?>
+                              <tr class="cart_item">
+                                <td class="product-name">
+                                  <?php echo $all['productName'] ?>&nbsp;
+                                  <strong class="product-quantity">×&nbsp;<?php echo $all['quantity'] ?></strong>
+                                  <dl class="variation">
+                                    <dt class="variation-Vendor">Category:</dt>
+                                    <dd class="variation-Vendor">
+                                      <p><?php echo $all['productCategory'] ?></p>
+                                    </dd>
+                                  </dl>
+                                </td>
+                                <td class="product-total">
+                                  <span class="woocommerce-Price-amount amount"><span
+                                      class="woocommerce-Price-currencySymbol">₵</span><?php echo number_format($all['productPrice'] * $all['quantity'], 2) ?></span>
+                                </td>
+                              </tr>
+                            <?php } ?>
+
                           </tbody>
                           <tfoot>
                             <tr class="cart-subtotal">
                               <th>Subtotal</th>
                               <td>
-                                <span class="woocommerce-Price-amount amount"><bdi><span
-                                      class="woocommerce-Price-currencySymbol">$</span>569.00</bdi></span>
+                                <span class="woocommerce-Price-amount amount"><span
+                                    class="woocommerce-Price-currencySymbol">₵</span><?php echo $total['Amount'] ?></span>
                               </td>
                             </tr>
 
@@ -1337,8 +1227,8 @@ $total = total_amount_controller($customer_id);
                               <th>Total</th>
                               <td>
                                 <strong><span
-                                    class="woocommerce-Price-amount amount"><bdi><span
-                                        class="woocommerce-Price-currencySymbol">$</span>569.00</bdi></span></strong>
+                                    class="woocommerce-Price-amount amount"><span
+                                      class="woocommerce-Price-currencySymbol">₵</span><?php echo $total['Amount'] ?></span></strong>
                               </td>
                             </tr>
                           </tfoot>
@@ -1362,16 +1252,8 @@ $total = total_amount_controller($customer_id);
                             </div>
                           </div>
 
-                          <button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">Place order</button>
+                          <button type="submit" class="button alt" name="woocommerce_checkout_place_order">Place order</button>
 
-                          <input
-                            type="hidden"
-                            id="woocommerce-process-checkout-nonce"
-                            name="woocommerce-process-checkout-nonce"
-                            value="4fca700751" /><input
-                            type="hidden"
-                            name="_wp_http_referer"
-                            value="/bookory/?wc-ajax=update_order_review" />
                         </div>
                       </div>
                     </div>
@@ -1399,8 +1281,7 @@ $total = total_amount_controller($customer_id);
           class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
           data-id="5c1c1fa"
           data-element_type="section"
-          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'
-          style="width: 1024px; left: 0px">
+          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
           <div class="elementor-container elementor-column-gap-no">
             <div
               class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
@@ -1416,7 +1297,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../"
+                          href="../shop/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1427,7 +1308,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../"> Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
                       </div>
                     </div>
@@ -1449,7 +1330,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../my-account/"
+                          href="../dashboard/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i
@@ -1460,7 +1341,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../my-account/"> Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
                       </div>
                     </div>
@@ -1503,7 +1384,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-icon-box-wrapper">
                       <div class="elementor-icon-box-icon">
                         <a
-                          href="../wishlist/"
+                          href="../wishlist/index.php"
                           class="elementor-icon elementor-animation-"
                           tabindex="-1">
                           <i aria-hidden="true" class="far fa-heart"></i>
@@ -1512,7 +1393,7 @@ $total = total_amount_controller($customer_id);
 
                       <div class="elementor-icon-box-content">
                         <h3 class="elementor-icon-box-title">
-                          <a href="../wishlist/"> Wishlist </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
                       </div>
                     </div>
@@ -1629,7 +1510,7 @@ $total = total_amount_controller($customer_id);
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1688,12 +1569,12 @@ $total = total_amount_controller($customer_id);
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1873,27 +1754,28 @@ $total = total_amount_controller($customer_id);
     </footer>
   </div>
   <!-- #page -->
+
   <?php if ($customer_id != 0) { ?>
     <div class="account-wrap d-none">
       <div class="account-inner dashboard">
         <ul class="account-dashboard">
           <li>
-            <a href="dashboard/index.php" title="Orders">Orders</a>
+            <a href="../dashboard/index.php" title="Orders">Orders</a>
           </li>
           <li>
-            <a href="dashboard/downloads.php" title="Downloads">Downloads</a>
+            <a href="../dashboard/downloads.php" title="Downloads">Downloads</a>
           </li>
           <li>
-            <a href="dashboard/address.php" title="Edit Address">Edit Address</a>
+            <a href="../dashboard/address.php" title="Edit Address">Edit Address</a>
           </li>
           <li>
-            <a href="dashboard/account-details.php" title="Account Details">Account Details</a>
+            <a href="../dashboard/account-details.php" title="Account Details">Account Details</a>
           </li>
           <li>
             <a
               title=""
               class="tips"
-              href="logout.php"
+              href="../logout.php"
               data-original-title="Log out">Log Out</a>
           </li>
         </ul>
@@ -1920,7 +1802,7 @@ $total = total_amount_controller($customer_id);
           <ul id="menu-main-menu" class="menu">
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="index.php">Home</a>
+              <a href="../index.php">Home</a>
             </li>
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
@@ -1971,7 +1853,7 @@ $total = total_amount_controller($customer_id);
             </li>
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
-              <a href="../faq/index.php">FAQ</a>
+              <a href="faq/index.php">FAQ</a>
             </li>
             <li
               class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3150">
@@ -2033,7 +1915,7 @@ $total = total_amount_controller($customer_id);
   </div>
   <div id="woosw_wishlist" class="woosw-popup woosw-popup-center"></div>
 
-   <div class="site-header-cart-side">
+  <div class="site-header-cart-side">
     <div class="cart-side-heading">
       <span class="cart-side-title">Shopping cart</span>
       <a href="#" class="close-cart-side">close</a>
@@ -2079,182 +1961,156 @@ $total = total_amount_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
     </div>
   </div>
+  <div class="cart-side-overlay"></div>
 
-  <link
-    rel="stylesheet"
-    id="wc-blocks-style-css"
-    href="../wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-9.5.1"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-icon-list-css"
-    href="../wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1742270149"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="e-animation-shrink-css"
-    href="../wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-shrink.min.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-social-icons-css"
-    href="../wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="e-apple-webkit-css"
-    href="../wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1742270149"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="elementor-post-3161-css"
-    href="../wp-content/uploads/elementor/css/post-3161.css?ver=1742270152"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-text-editor-css"
-    href="../wp-content/plugins/elementor/assets/css/widget-text-editor.min.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-heading-css"
-    href="../wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-image-css"
-    href="../wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="rs-plugin-settings-css"
-    href="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/css/rs6.css?ver=6.7.18"
-    media="all" />
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0.1"
-    id="swv-js"></script>
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.0.1"
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    const paymentForm = document.getElementById('paymentForms');
+    paymentForm.addEventListener("submit", payWithPaystack, false);
+
+    // PAYMENT FUNCTION
+    function payWithPaystack(e) {
+      e.preventDefault();
+      let handler = PaystackPop.setup({
+        key: 'pk_test_9a66f0be5bdc776def0d8776416b637dc1060720', // Replace with your public key
+        email: document.getElementById("email").value,
+        amount: document.getElementById("amount").value * 100,
+        currency: 'GHS',
+        onClose: function() {
+          Swal.fire({
+            title: 'Cancellation!',
+            text: 'You are choosing to stop placing your order!',
+            icon: 'warning',
+            button: 'OK'
+          })
+        },
+        callback: function(response) {
+          window.location = `../action/add_payment.php?email=${document.getElementById("email").value}&amount=${document.getElementById("amount").value}&firstName=${document.getElementById("firstName").value}&lastName=${document.getElementById("lastName").value}&phone=${document.getElementById("phone").value}&street=${document.getElementById("street").value}&country=${document.getElementById("country").value}&apartment=${document.getElementById("apartment").value}&city=${document.getElementById("city").value}&reference=${response.reference}`
+          Swal.fire({
+            title: 'Please Wait !',
+            html: 'Payment processing',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: () => {
+              Swal.showLoading()
+            },
+          });
+        }
+      });
+      handler.openIframe();
+    }
+  </script>
+  <script src="../wp-content/intlTelInput.js"></script>
+  <script>
+    var phone_number = window.intlTelInput(document.querySelector("#phone"), {
+      separateDialCode: true,
+      preferredCountries: ["gh"],
+      hiddenInput: "full",
+      utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+    });
+
+    $("#paymentForms").submit(function() {
+      var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+      $("input[name='phone[full]'").val(full_number)
+    });
+  </script>
+  <link rel='stylesheet' id='wc-blocks-style-css'
+    href='../wp-content/plugins/woocommerce/assets/client/blocks/wc-blocksfbdf.css?ver=wc-9.5.1' media='all' />
+  <link rel='stylesheet' id='widget-icon-list-css'
+    href='../wp-content/uploads/elementor/css/custom-widget-icon-list.min2420.css?ver=1742270149' media='all' />
+  <link rel='stylesheet' id='e-animation-shrink-css'
+    href='../wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-shrink.min42e3.css?ver=3.26.0'
+    media='all' />
+  <link rel='stylesheet' id='widget-social-icons-css'
+    href='../wp-content/plugins/elementor/assets/css/widget-social-icons.min42e3.css?ver=3.26.0' media='all' />
+  <link rel='stylesheet' id='e-apple-webkit-css'
+    href='../wp-content/uploads/elementor/css/custom-apple-webkit.min2420.css?ver=1742270149' media='all' />
+  <link rel='stylesheet' id='elementor-post-3161-css'
+    href='../wp-content/uploads/elementor/css/post-3161206e.css?ver=1742270152' media='all' />
+  <link rel='stylesheet' id='widget-icon-box-css'
+    href='../wp-content/uploads/elementor/css/custom-widget-icon-box.min2420.css?ver=1742270149' media='all' />
+  <link rel='stylesheet' id='rs-plugin-settings-css'
+    href='../wp-content/plugins/revslider/sr6/assets/css/rs6efd5.css?ver=6.7.18' media='all' />
+  <script src="../wp-content/plugins/contact-form-7/includes/swv/js/index37ad.js?ver=6.0.1" id="swv-js"></script>
+  <script src="../wp-content/plugins/contact-form-7/includes/js/index37ad.js?ver=6.0.1"
     id="contact-form-7-js"></script>
-  <script
-    src="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/js/rs6.min.js?ver=6.7.18"
-    defer=""
-    async=""
+  <script src="../wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18" defer async
+    id="tp-tools-js"></script>
+  <script src="../wp-content/plugins/revslider/sr6/assets/js/rs6.minefd5.js?ver=6.7.18" defer async
     id="revmin-js"></script>
-  <script
-    src="../wp-includes/js/api-request.min.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
-  <script
-    src="../wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"
-    id="wp-polyfill-js"></script>
-  <script
-    src="../wp-includes/js/dist/url.min.js?ver=e87eb76272a3a08402d2"
-    id="wp-url-js"></script>
-  <script
-    src="../wp-includes/js/dist/api-fetch.min.js?ver=d387b816bc1ed2042e28"
-    id="wp-api-fetch-js"></script>
-  <script
-    src="../wp-content/plugins/woo-variation-swatches/assets/js/frontend.min.js?ver=1732076616"
+  <script src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2" id="wp-api-request-js"></script>
+  <script src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0" id="wp-polyfill-js"></script>
+  <script src="../wp-includes/js/dist/url.min9481.js?ver=e87eb76272a3a08402d2" id="wp-url-js"></script>
+  <script src="../wp-includes/js/dist/api-fetch.min53e9.js?ver=d387b816bc1ed2042e28" id="wp-api-fetch-js"></script>
+  <script src="../wp-content/plugins/woo-variation-swatches/assets/js/frontend.min63ce.js?ver=1732076616"
     id="woo-variation-swatches-js"></script>
   <script
-    src="../wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js?ver=4.9.6"
+    src="../wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min1845.js?ver=4.9.6"
     id="perfect-scrollbar-js"></script>
-  <script
-    src="../wp-content/plugins/woo-smart-wishlist/assets/js/frontend.js?ver=4.9.6"
+  <script src="../wp-content/plugins/woo-smart-wishlist/assets/js/frontend1845.js?ver=4.9.6"
     id="woosw-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/main.js?ver=2.2.0"
-    id="bookory-theme-js"></script>
-  <script
-    src="../wp-includes/js/imagesloaded.min.js?ver=5.0.0"
-    id="imagesloaded-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/skip-link-focus-fix.min.js?ver=20130115"
+  <script src="../wp-content/themes/bookory/assets/js/frontend/main3601.js?ver=2.2.0" id="bookory-theme-js"></script>
+  <script src="../wp-includes/js/imagesloaded.minbb93.js?ver=5.0.0" id="imagesloaded-js"></script>
+  <script src="../wp-content/themes/bookory/assets/js/skip-link-focus-fix.min08e0.js?ver=20130115"
     id="bookory-skip-link-focus-fix-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/search-popup.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/frontend/search-popup3601.js?ver=2.2.0"
     id="bookory-search-popup-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/text-editor.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/frontend/text-editor3601.js?ver=2.2.0"
     id="bookory-text-editor-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/nav-mobile.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/frontend/nav-mobile3601.js?ver=2.2.0"
     id="bookory-nav-mobile-js"></script>
-  <script
-    src="../wp-content/themes/bookory/inc/megamenu/assets/js/frontend.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/inc/megamenu/assets/js/frontend3601.js?ver=2.2.0"
     id="bookory-megamenu-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/login.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/frontend/login3601.js?ver=2.2.0"
     id="bookory-ajax-login-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=9.5.1"
-    id="wc-add-to-cart-variation-js"
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/slick.min.js?ver=2.2.0"
-    id="slick-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min.js?ver=2.2.0"
+  <script src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min0c46.js?ver=9.5.1"
+    id="wc-add-to-cart-variation-js" data-wp-strategy="defer"></script>
+  <script src="../wp-content/themes/bookory/assets/js/vendor/slick.min3601.js?ver=2.2.0" id="slick-js"></script>
+  <script src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
-  <script
-    src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontend.js?ver=4.1.4"
+  <script src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
     id="woosq-frontend-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=9.5.1"
+  <script src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
     id="sourcebuster-js-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=9.5.1"
+  <script src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
     id="wc-order-attribution-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/tooltipster.bundle.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
     id="bookory-products-ajax-search-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/main.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/quantity.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/quantity.min3601.js?ver=2.2.0"
     id="bookory-input-quantity-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min3601.js?ver=2.2.0"
     id="bookory-off-canvas-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min3601.js?ver=2.2.0"
     id="bookory-cart-canvas-js"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.26.0"
+  <script src="../wp-content/plugins/elementor/assets/js/webpack.runtime.min42e3.js?ver=3.26.0"
     id="elementor-webpack-runtime-js"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.26.0"
+  <script src="../wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
     id="elementor-frontend-modules-js"></script>
-  <script
-    src="../wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"
-    id="jquery-ui-core-js"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.26.0"
+  <script src="../wp-includes/js/jquery/ui/core.minb37e.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+  <script src="../wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
     id="elementor-frontend-js"></script>
-  <span id="elementor-device-mode" class="elementor-screen-only"></span>
-  <script
-    src="../wp-content/themes/bookory/assets/js/elementor-frontend.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
     id="elementor-sticky-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/sticky.js?ver=2.2.0"
+  <script src="../wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
     id="bookory-elementor-sticky-js"></script>
-
+  <script src="../wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min0c46.js?ver=9.5.1"
+    id="wc-cart-fragments-js" defer data-wp-strategy="defer"></script>
 
 </body>
 

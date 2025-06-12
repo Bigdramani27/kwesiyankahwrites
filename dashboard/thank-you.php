@@ -467,17 +467,23 @@
                   data-widget_type="bookory-header-group.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-header-group-wrapper">
-                      <div class="header-group-action">
-                        <div class="site-header-cart menu">
+                         <div class="header-group-action">
+                                  <div class="site-header-cart menu">
+                        <?php if ($customer_id != 0) {  ?>
                           <a
                             class="cart-contents"
-                            href="../../cart/index.php"
+                            href="../cart/index.php"
                             title="View your shopping cart">
-                            <span class="count">0</span>
-                            <span class="woocommerce-Price-amount amount"><bdi><span
-                                  class="woocommerce-Price-currencySymbol">₵</span>0.00</bdi></span>
+                            <?php if ($cart != 0) { ?> <span class="count"><?php echo $cart ?></span> <?php } ?>
                           </a>
-                        </div>
+                        <?php } else {  ?>
+                          <a
+                            class="cart-contents"
+                            href="../my-account/index.php"
+                            title="View your shopping cart">
+                          </a>
+                        <?php  } ?>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -758,7 +764,7 @@
                       </li>
 
                       <li class="woocommerce-order-overview__email email">
-                        Email: <strong>a.dramani@aisghana.org</strong>
+                        Email: <strong>profkwesiyankah@gmail.com</strong>
                       </li>
 
                       <li class="woocommerce-order-overview__total total">
@@ -854,7 +860,7 @@
                         Dummy Test<br>2332<br>Test, CA 90001
                         <p class="woocommerce-customer-details--phone">343444434</p>
 
-                        <p class="woocommerce-customer-details--email">a.dramani@aisghana.org
+                        <p class="woocommerce-customer-details--email">profkwesiyankah@gmail.com
                         </p>
 
                       </address>
@@ -877,77 +883,91 @@
     </div><!-- #content -->
 
     <div class="footer-width-fixer">
-      <div data-elementor-type="wp-post" data-elementor-id="751" class="elementor elementor-751">
-        <div class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-          data-id="5c1c1fa" data-element_type="section"
-          data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}"
-          style="width: 753px; left: 0px;">
+      <div
+        data-elementor-type="wp-post"
+        data-elementor-id="751"
+        class="elementor elementor-751">
+        <div
+          class="elementor-section elementor-top-section elementor-element elementor-element-5c1c1fa elementor-section-content-middle elementor-section-stretched elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+          data-id="5c1c1fa"
+          data-element_type="section"
+          data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
           <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
-              data-id="0feafc9" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-0feafc9"
+              data-id="0feafc9"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-16cf748 elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="16cf748" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-16cf748 elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="16cf748"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href="https://demo2.pavothemes.com/bookory/"
-                          class="elementor-icon elementor-animation-" tabindex="-1">
-                          <i aria-hidden="true" class="bookory-icon- bookory-icon-home"></i>
+                        <a
+                          href="../shop/index.php"
+                          class="elementor-icon elementor-animation-"
+                          tabindex="-1">
+                          <i
+                            aria-hidden="true"
+                            class="bookory-icon- bookory-icon-home"></i>
                         </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="https://demo2.pavothemes.com/bookory/">
-                            Shop </a>
+                          <a href="../shop/index.php"> Shop </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-9d90670"
-              data-id="9d90670" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-9d90670"
+              data-id="9d90670"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-62e085d elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="62e085d" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-62e085d elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="62e085d"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href=""
-                          class="elementor-icon elementor-animation-" tabindex="-1">
-                          <i aria-hidden="true"
-                            class="bookory-icon- bookory-icon-account"></i> </a>
+                        <a
+                          href="../dashboard/index.php"
+                          class="elementor-icon elementor-animation-"
+                          tabindex="-1">
+                          <i
+                            aria-hidden="true"
+                            class="bookory-icon- bookory-icon-account"></i>
+                        </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="">
-                            Account </a>
+                          <a href="../dashboard/index.php"> Account </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6ed0632"
-              data-id="6ed0632" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-6ed0632"
+              data-id="6ed0632"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-da94cbb elementor-widget elementor-widget-bookory-search"
-                  data-id="da94cbb" data-element_type="widget"
+                <div
+                  class="elementor-element elementor-element-da94cbb elementor-widget elementor-widget-bookory-search"
+                  data-id="da94cbb"
+                  data-element_type="widget"
                   data-widget_type="bookory-search.default">
                   <div class="elementor-widget-container">
                     <div class="site-header-search">
@@ -960,30 +980,32 @@
                 </div>
               </div>
             </div>
-            <div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-336d314"
-              data-id="336d314" data-element_type="column">
+            <div
+              class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-336d314"
+              data-id="336d314"
+              data-element_type="column">
               <div class="elementor-widget-wrap elementor-element-populated">
-                <div class="elementor-element elementor-element-2b02f7c elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
-                  data-id="2b02f7c" data-element_type="widget" data-widget_type="icon-box.default">
+                <div
+                  class="elementor-element elementor-element-2b02f7c elementor-view-default elementor-position-top elementor-mobile-position-top elementor-widget elementor-widget-icon-box"
+                  data-id="2b02f7c"
+                  data-element_type="widget"
+                  data-widget_type="icon-box.default">
                   <div class="elementor-widget-container">
                     <div class="elementor-icon-box-wrapper">
-
                       <div class="elementor-icon-box-icon">
-                        <a href=""
-                          class="elementor-icon elementor-animation-" tabindex="-1">
-                          <i aria-hidden="true" class="far fa-heart"></i> </a>
+                        <a
+                          href="../wishlist/index.php"
+                          class="elementor-icon elementor-animation-"
+                          tabindex="-1">
+                          <i aria-hidden="true" class="far fa-heart"></i>
+                        </a>
                       </div>
 
                       <div class="elementor-icon-box-content">
-
                         <h3 class="elementor-icon-box-title">
-                          <a href="">
-                            Wishlist </a>
+                          <a href="../wishlist/index.php"> Wishlist </a>
                         </h3>
-
-
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -1098,7 +1120,7 @@
                     <div class="elementor-widget-container">
                       <h2
                         class="elementor-heading-title elementor-size-default">
-                        <a href="">email: a.dramani@aisghana.org</a>
+                        <a href="">email: profkwesiyankah@gmail.com</a>
                       </h2>
                     </div>
                   </div>
@@ -1157,12 +1179,12 @@
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../privacy.html">
+                          <a href="../privacy.php">
                             <span class="elementor-icon-list-text">Privacy</span>
                           </a>
                         </li>
                         <li class="elementor-icon-list-item">
-                          <a href="../terms.html">
+                          <a href="../terms.php">
                             <span class="elementor-icon-list-text">Terms and Conditions</span>
                           </a>
                         </li>
@@ -1540,7 +1562,7 @@
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../../../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>
