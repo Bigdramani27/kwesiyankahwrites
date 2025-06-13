@@ -1562,7 +1562,7 @@
         </p>
 
         <p class="woocommerce-mini-cart__buttons buttons">
-          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+          <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../../checkout/index.php" class="button checkout wc-forward">Checkout</a>
         </p>
       </div>
     </div>
@@ -1640,9 +1640,7 @@
     defer
     async
     id="revmin-js"></script>
-  <script
-    src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
+
   <script
     src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
@@ -1707,9 +1705,7 @@
   <script
     src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
+ 
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
@@ -1753,9 +1749,7 @@
   <script
     src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
-    id="elementor-sticky-js"></script>
+
   <script
     src="../wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
     id="bookory-elementor-sticky-js"></script>

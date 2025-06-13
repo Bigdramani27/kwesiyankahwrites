@@ -72,9 +72,9 @@ class Customer extends Connection
 	}
 
 	//adding to shipping for a specific user
-	function add_to_shipping($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone)
+	function add_to_shipping($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone, $zip)
 	{
-		return $this->query("insert into shipping (shippingID, userID, firstName, lastName, country, street, apartment, city, phone) values ('$shippingID', '$userID', '$firstName', '$lastName', '$country', '$street', '$apartment', '$city', '$phone' )");
+		return $this->query("insert into shipping (shippingID, userID, firstName, lastName, country, street, apartment, city, phone, zip) values ('$shippingID', '$userID', '$firstName', '$lastName', '$country', '$street', '$apartment', '$city', '$phone', '$zip')");
 	}
 
 	//selecting one person in shipping to see if they are there
@@ -84,8 +84,8 @@ class Customer extends Connection
 	}
 
 	//update shipping for a specific user
-	function updating_shipping_for_user($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone)
+	function updating_shipping_for_user($shippingID, $userID, $firstName, $lastName, $country, $street, $apartment, $city, $phone, $zip)
 	{
-		return $this->query("update shipping set firstName = '$firstName', lastName ='$lastName', country='$country', street='$street', apartment='$apartment', city='$city', phone = '$phone' where userID='$userID' and shippingID = '$shippingID'");
+		return $this->query("update shipping set firstName = '$firstName', lastName ='$lastName', country='$country', street='$street', apartment='$apartment', city='$city', phone = '$phone', zip='$zip' where userID='$userID' and shippingID = '$shippingID'");
 	}
 }

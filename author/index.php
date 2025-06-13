@@ -1696,14 +1696,14 @@ $total = total_amount_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
     </div>
   </div>
   <div class="cart-side-overlay"></div>
-  <link
+ <link
     rel="stylesheet"
     id="wc-blocks-style-css"
     href="../wp-content/plugins/woocommerce/assets/client/blocks/wc-blocksfbdf.css?ver=wc-9.5.1"
@@ -1740,18 +1740,13 @@ $total = total_amount_controller($customer_id);
     media="all" />
   <link
     rel="stylesheet"
-    id="elementor-post-6321-css"
-    href="../wp-content/uploads/elementor/css/post-6321e1bd.css?ver=1742288053"
+    id="widget-icon-box-css"
+    href="../wp-content/uploads/elementor/css/custom-widget-icon-box.min2420.css?ver=1742270149"
     media="all" />
   <link
     rel="stylesheet"
     id="widget-text-editor-css"
     href="../wp-content/plugins/elementor/assets/css/widget-text-editor.min42e3.css?ver=3.26.0"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="widget-icon-box-css"
-    href="../wp-content/uploads/elementor/css/custom-widget-icon-box.min2420.css?ver=1742270149"
     media="all" />
   <link
     rel="stylesheet"
@@ -1763,14 +1758,6 @@ $total = total_amount_controller($customer_id);
     id="rs-plugin-settings-css"
     href="../wp-content/plugins/revslider/sr6/assets/css/rs6efd5.css?ver=6.7.18"
     media="all" />
-
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/swv/js/index37ad.js?ver=6.0.1"
-    id="swv-js"></script>
-
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/js/index37ad.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
   <script
     src="../wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18"
     defer
@@ -1783,9 +1770,6 @@ $total = total_amount_controller($customer_id);
     id="revmin-js"></script>
 
   <script
-    src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
-  <script
     src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
   <script
@@ -1794,17 +1778,9 @@ $total = total_amount_controller($customer_id);
   <script
     src="../wp-includes/js/dist/api-fetch.min53e9.js?ver=d387b816bc1ed2042e28"
     id="wp-api-fetch-js"></script>
-
-  <script
-    src="../wp-content/plugins/woo-variation-swatches/assets/js/frontend.min63ce.js?ver=1732076616"
-    id="woo-variation-swatches-js"></script>
   <script
     src="../wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min1845.js?ver=4.9.6"
     id="perfect-scrollbar-js"></script>
-
-  <script
-    src="../wp-content/plugins/woo-smart-wishlist/assets/js/frontend1845.js?ver=4.9.6"
-    id="woosw-frontend-js"></script>
 
   <script
     src="../wp-content/themes/bookory/assets/js/frontend/main3601.js?ver=2.2.0"
@@ -1830,7 +1806,6 @@ $total = total_amount_controller($customer_id);
   <script
     src="../wp-content/themes/bookory/assets/js/frontend/login3601.js?ver=2.2.0"
     id="bookory-ajax-login-js"></script>
-
   <script
     src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min0c46.js?ver=9.5.1"
     id="wc-add-to-cart-variation-js"
@@ -1841,26 +1816,13 @@ $total = total_amount_controller($customer_id);
   <script
     src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
-
-  <script
-    src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
-    id="woosq-frontend-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
-    id="sourcebuster-js-js"></script>
-
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
-    id="wc-order-attribution-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
+ 
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
@@ -1874,28 +1836,17 @@ $total = total_amount_controller($customer_id);
     src="../wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min3601.js?ver=2.2.0"
     id="bookory-cart-canvas-js"></script>
   <script
-    src="../wp-content/plugins/elementor/assets/js/webpack.runtime.min42e3.js?ver=3.26.0"
-    id="elementor-webpack-runtime-js"></script>
-  <script
     src="../wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
     id="elementor-frontend-modules-js"></script>
   <script
     src="../wp-includes/js/jquery/ui/core.minb37e.js?ver=1.13.3"
     id="jquery-ui-core-js"></script>
-
   <script
     src="../wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
     id="elementor-frontend-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
-    id="elementor-sticky-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
-    id="bookory-elementor-sticky-js"></script>
-
   <script
     src="../wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min0c46.js?ver=9.5.1"
     id="wc-cart-fragments-js"

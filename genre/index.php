@@ -1597,7 +1597,7 @@ $total = total_amount_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
@@ -1725,10 +1725,7 @@ $total = total_amount_controller($customer_id);
       });
     });
   </script>
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/js/index37ad.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
-  <script
+   <script
     src="../wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18"
     defer
     async
@@ -1738,9 +1735,6 @@ $total = total_amount_controller($customer_id);
     defer
     async
     id="revmin-js"></script>
-  <script
-    src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
   <script
     src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
@@ -1791,23 +1785,15 @@ $total = total_amount_controller($customer_id);
     src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
   <script
-    src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
-    id="woosq-frontend-js"></script>
-  <script
     src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
     id="sourcebuster-js-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
-    id="wc-order-attribution-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
+ 
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
@@ -1853,16 +1839,10 @@ $total = total_amount_controller($customer_id);
   <script
     src="../wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
     id="elementor-frontend-modules-js"></script>
-
-  <script
-    src="../wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
-    id="elementor-frontend-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
-    id="elementor-sticky-js"></script>
+
   <script
     src="../wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
     id="bookory-elementor-sticky-js"></script>

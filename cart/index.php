@@ -1534,7 +1534,7 @@ $total = total_amount_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
@@ -1654,147 +1654,99 @@ $total = total_amount_controller($customer_id);
   </script>
 
   <script
-    src="../wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0.1"
-    id="swv-js"></script>
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
-  <script
-    src="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/js/rbtools.min.js?ver=6.7.18"
-    defer=""
-    async=""
+    src="../wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18"
+    defer
+    async
     id="tp-tools-js"></script>
   <script
-    src="//demo2.pavothemes.com/bookory/wp-content/plugins/revslider/sr6/assets/js/rs6.min.js?ver=6.7.18"
-    defer=""
-    async=""
+    src="../wp-content/plugins/revslider/sr6/assets/js/rs6.minefd5.js?ver=6.7.18"
+    defer
+    async
     id="revmin-js"></script>
+
   <script
-    src="../wp-includes/js/api-request.min.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
-  <script
-    src="../wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"
+    src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
   <script
-    src="../wp-includes/js/dist/url.min.js?ver=e87eb76272a3a08402d2"
+    src="../wp-includes/js/dist/url.min9481.js?ver=e87eb76272a3a08402d2"
     id="wp-url-js"></script>
   <script
-    src="../wp-includes/js/dist/api-fetch.min.js?ver=d387b816bc1ed2042e28"
+    src="../wp-includes/js/dist/api-fetch.min53e9.js?ver=d387b816bc1ed2042e28"
     id="wp-api-fetch-js"></script>
   <script
-    src="../wp-content/plugins/woo-variation-swatches/assets/js/frontend.min.js?ver=1732076616"
-    id="woo-variation-swatches-js"></script>
-  <script
-    src="../wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js?ver=4.9.6"
+    src="../wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min1845.js?ver=4.9.6"
     id="perfect-scrollbar-js"></script>
+
   <script
-    src="../wp-content/plugins/woo-smart-wishlist/assets/js/frontend.js?ver=4.9.6"
-    id="woosw-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/main.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/frontend/main3601.js?ver=2.2.0"
     id="bookory-theme-js"></script>
   <script
-    src="../wp-includes/js/imagesloaded.min.js?ver=5.0.0"
+    src="../wp-includes/js/imagesloaded.minbb93.js?ver=5.0.0"
     id="imagesloaded-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/skip-link-focus-fix.min.js?ver=20130115"
+    src="../wp-content/themes/bookory/assets/js/skip-link-focus-fix.min08e0.js?ver=20130115"
     id="bookory-skip-link-focus-fix-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/frontend/search-popup.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/frontend/search-popup3601.js?ver=2.2.0"
     id="bookory-search-popup-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/frontend/text-editor.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/frontend/text-editor3601.js?ver=2.2.0"
     id="bookory-text-editor-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/frontend/nav-mobile.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/frontend/nav-mobile3601.js?ver=2.2.0"
     id="bookory-nav-mobile-js"></script>
   <script
-    src="../wp-content/themes/bookory/inc/megamenu/assets/js/frontend.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/inc/megamenu/assets/js/frontend3601.js?ver=2.2.0"
     id="bookory-megamenu-frontend-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/frontend/login.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/frontend/login3601.js?ver=2.2.0"
     id="bookory-ajax-login-js"></script>
   <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=9.5.1"
+    src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min0c46.js?ver=9.5.1"
     id="wc-add-to-cart-variation-js"
     data-wp-strategy="defer"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/vendor/slick.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/vendor/slick.min3601.js?ver=2.2.0"
     id="slick-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
   <script
-    src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontend.js?ver=4.1.4"
-    id="woosq-frontend-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=9.5.1"
-    id="sourcebuster-js-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=9.5.1"
-    id="wc-order-attribution-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/tooltipster.bundle.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
+ 
   <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/main.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/quantity.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/woocommerce/quantity.min3601.js?ver=2.2.0"
     id="bookory-input-quantity-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/woocommerce/off-canvas.min3601.js?ver=2.2.0"
     id="bookory-off-canvas-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/woocommerce/cart-canvas.min3601.js?ver=2.2.0"
     id="bookory-cart-canvas-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/sticky-add-to-cart.min.js?ver=2.2.0"
-    id="bookory-sticky-add-to-cart-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/frontend/countdown.js?ver=2.2.0"
-    id="bookory-countdown-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/spritespin.js?ver=2.2.0"
-    id="spritespin-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky-kit.min.js?ver=2.2.0"
-    id="sticky-kit-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/single.min.js?ver=2.2.0"
-    id="bookory-single-product-js"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.26.0"
-    id="elementor-webpack-runtime-js"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.26.0"
+    src="../wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
     id="elementor-frontend-modules-js"></script>
   <script
-    src="../wp-includes/js/jquery/ui/core.min.js?ver=1.13.3"
+    src="../wp-includes/js/jquery/ui/core.minb37e.js?ver=1.13.3"
     id="jquery-ui-core-js"></script>
   <script
-    src="../wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.26.0"
+    src="../wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
     id="elementor-frontend-js"></script>
-  <span id="elementor-device-mode" class="elementor-screen-only"></span>
   <script
-    src="../wp-content/themes/bookory/assets/js/elementor-frontend.js?ver=2.2.0"
+    src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
   <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky.js?ver=2.2.0"
-    id="elementor-sticky-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/sticky.js?ver=2.2.0"
-    id="bookory-elementor-sticky-js"></script>
-
-  <div
-    class="widget_shopping_cart_live_region screen-reader-text"
-    role="status"></div>
+    src="../wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min0c46.js?ver=9.5.1"
+    id="wc-cart-fragments-js"
+    defer
+    data-wp-strategy="defer"></script>
 </body>
 
 </html>

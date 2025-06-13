@@ -21,7 +21,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Prof Kwesi Yankah Book Store- Address</title>
-  <meta name="robots" content="max-image-preview:large" />
   <link
     rel="stylesheet"
     id="dashicons-css"
@@ -32,24 +31,12 @@ $address = select_one_shipping_userID_controller($customer_id);
     id="hfe-widgets-style-css"
     href="../wp-content/plugins/header-footer-elementor/inc/widgets-css/frontendb95e.css?ver=2.0.3"
     media="all" />
-
-  <link
-    rel="stylesheet"
-    id="wp-block-library-css"
-    href="../wp-includes/css/dist/block-library/style.mind1c0.css?ver=6.7.2"
-    media="all" />
-
   <link
     rel="stylesheet"
     id="bookory-gutenberg-blocks-css"
     href="../wp-content/themes/bookory/assets/css/base/gutenberg-blocks3601.css?ver=2.2.0"
     media="all" />
 
-  <link
-    rel="stylesheet"
-    id="contact-form-7-css"
-    href="../wp-content/plugins/contact-form-7/includes/css/styles37ad.css?ver=6.0.1"
-    media="all" />
   <link
     rel="stylesheet"
     id="mas-wc-brands-style-css"
@@ -60,17 +47,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     id="-css"
     href="../wp-content/plugins/opal-demo/styled1c0.css?ver=6.7.2"
     media="all" />
-  <link
-    rel="stylesheet"
-    id="photoswipe-css"
-    href="../wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min0c46.css?ver=9.5.1"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="photoswipe-default-skin-css"
-    href="../wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min0c46.css?ver=9.5.1"
-    media="all" />
-
   <link
     rel="stylesheet"
     id="hfe-style-css"
@@ -100,6 +76,41 @@ $address = select_one_shipping_userID_controller($customer_id);
     rel="stylesheet"
     id="font-awesome-4-shim-css"
     href="../wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="widget-divider-css"
+    href="../wp-content/plugins/elementor/assets/css/widget-divider.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="e-animation-wobble-horizontal-css"
+    href="../wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-wobble-horizontal.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="widget-image-css"
+    href="../wp-content/plugins/elementor/assets/css/widget-image.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="widget-text-editor-css"
+    href="../wp-content/plugins/elementor/assets/css/widget-text-editor.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="widget-heading-css"
+    href="../wp-content/plugins/elementor/assets/css/widget-heading.min42e3.css?ver=3.26.0"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="widget-icon-box-css"
+    href="../wp-content/uploads/elementor/css/custom-widget-icon-box.min2420.css?ver=1742270149"
+    media="all" />
+  <link
+    rel="stylesheet"
+    id="elementor-post-210-css"
+    href="../wp-content/uploads/elementor/css/post-210152a.css?ver=1742274011"
     media="all" />
   <link
     rel="stylesheet"
@@ -171,11 +182,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     media="all" />
   <link
     rel="stylesheet"
-    id="elementor-post-4757-css"
-    href="../wp-content/uploads/elementor/css/post-47570183.css?ver=1742271259"
-    media="all" />
-  <link
-    rel="stylesheet"
     id="magnific-popup-css"
     href="../wp-content/themes/bookory/assets/css/libs/magnific-popup3601.css?ver=2.2.0"
     media="all" />
@@ -193,11 +199,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     rel="stylesheet"
     id="dokan-modal-css"
     href="../wp-content/plugins/dokan-lite/assets/vendors/izimodal/iziModal.mina71e.css?ver=1732076614"
-    media="all" />
-  <link
-    rel="stylesheet"
-    id="dokan-select2-css-css"
-    href="../wp-content/plugins/dokan-lite/assets/vendors/select2/select29dd7.css?ver=3.14.3"
     media="all" />
   <link
     rel="stylesheet"
@@ -264,7 +265,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     id="elementor-icons-fa-regular-css"
     href="../wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min52d5.css?ver=5.15.3"
     media="all" />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
 
   <script
     src="../wp-includes/js/jquery/jquery.minf43b.js?ver=3.7.1"
@@ -272,114 +272,18 @@ $address = select_one_shipping_userID_controller($customer_id);
   <script
     src="../wp-includes/js/jquery/jquery-migrate.min5589.js?ver=3.4.1"
     id="jquery-migrate-js"></script>
+  <style>
+    .pencil {
+      display: none;
+      font-size: 20px;
+    }
 
-  <script
-    src="../wp-includes/js/dist/hooks.min4fdd.js?ver=4d63a3d491d11ffd8ac6"
-    id="wp-hooks-js"></script>
-  <script
-    src="../wp-includes/js/dist/i18n.minc33c.js?ver=5e580eb46a90c2b997e6"
-    id="wp-i18n-js"></script>
-
-  <script
-    src="../wp-content/plugins/dokan-lite/assets/vendors/izimodal/iziModal.min9dd7.js?ver=3.14.3"
-    id="dokan-modal-js"></script>
-  <script
-    src="../wp-content/plugins/dokan-lite/assets/vendors/sweetalert2/sweetalert2.all.mina71e.js?ver=1732076614"
-    id="dokan-sweetalert2-js"></script>
-  <script
-    src="../wp-includes/js/dist/vendor/moment.minf799.js?ver=2.30.1"
-    id="moment-js"></script>
-
-  <script
-    src="../wp-content/plugins/dokan-lite/assets/js/helpera71e.js?ver=1732076614"
-    id="dokan-util-helper-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min22b2.js?ver=2.7.0-wc.9.5.1"
-    id="jquery-blockui-js"
-    data-wp-strategy="defer"></script>
-
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min0c46.js?ver=9.5.1"
-    id="wc-add-to-cart-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min30d3.js?ver=1.7.21-wc.9.5.1"
-    id="zoom-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min4588.js?ver=2.7.2-wc.9.5.1"
-    id="flexslider-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min9c28.js?ver=4.1.1-wc.9.5.1"
-    id="photoswipe-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min9c28.js?ver=4.1.1-wc.9.5.1"
-    id="photoswipe-ui-default-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script id="wc-single-product-js-extra">
-    var wc_single_product_params = {
-      i18n_required_rating_text: "Please select a rating",
-      i18n_product_gallery_trigger_text: "View full-screen image gallery",
-      review_rating_required: "yes",
-      flexslider: {
-        rtl: false,
-        animation: "slide",
-        smoothHeight: true,
-        directionNav: false,
-        controlNav: "thumbnails",
-        slideshow: false,
-        animationSpeed: 500,
-        animationLoop: false,
-        allowOneSlide: false,
-      },
-      zoom_enabled: "1",
-      zoom_options: [],
-      photoswipe_enabled: "1",
-      photoswipe_options: {
-        shareEl: false,
-        closeOnScroll: false,
-        history: false,
-        hideAnimationDuration: 0,
-        showAnimationDuration: 0,
-      },
-      flexslider_enabled: "1",
-    };
-  </script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/single-product.min0c46.js?ver=9.5.1"
-    id="wc-single-product-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.mineaec.js?ver=2.1.4-wc.9.5.1"
-    id="js-cookie-js"
-    data-wp-strategy="defer"></script>
-
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min0c46.js?ver=9.5.1"
-    id="woocommerce-js"
-    defer
-    data-wp-strategy="defer"></script>
-  <script
-    src="../wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min42e3.js?ver=3.26.0"
-    id="font-awesome-4-shim-js"></script>
-  <script
-    src="../wp-includes/js/underscore.min3ab8.js?ver=1.13.7"
-    id="underscore-js"></script>
-
-  <script
-    src="../wp-includes/js/wp-util.mind1c0.js?ver=6.7.2"
-    id="wp-util-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jarallaxd1c0.js?ver=6.7.2"
-    id="jarallax-js"></script>
+    @media (max-width: 720px) {
+      .pencil {
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body
@@ -852,7 +756,7 @@ $address = select_one_shipping_userID_controller($customer_id);
                     <div class="woocommerce-notices-wrapper"></div>
 
                     <p>
-                      The following addresses will be used on the checkout page by default.</p>
+                      The following addresses will be used on the checkout page by default. <a href='edit-shipping.php'><i class="fa fa-edit pencil"> Edit</i> </a></p>
 
                     <div class="u-columns woocommerce-Addresses col1-set addresses">
 
@@ -864,7 +768,7 @@ $address = select_one_shipping_userID_controller($customer_id);
                         </header>
                         <?php if (!empty($address)) { ?>
                           <address>
-                            <?php echo $address['country'] ?><br><?php echo $address['street'] ?><br><?php echo $address['city'] ?><br><?php echo $address['phone'] ?><br><?php echo $address['zip'] ?><br><?php echo $address['apartment'] ?> </address>
+                            Country: <?php echo $address['country'] ?><br>Street: <?php echo $address['street'] ?><br>City: <?php echo $address['city'] ?><br>Phone: <?php echo $address['phone'] ?><br>Zip: <?php echo $address['zip'] ?><br>Apartment: <?php echo $address['apartment'] ?> </address>
                         <?php } else { ?>
                           <address>
                             You have not setup your address yet </address>
@@ -1575,7 +1479,7 @@ $address = select_one_shipping_userID_controller($customer_id);
           </p>
 
           <p class="woocommerce-mini-cart__buttons buttons">
-            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../checkout/index.php" class="button checkout wc-forward">Checkout</a>
+            <a href="../cart/index.php" class="button wc-forward">View cart</a><a href="../../checkout/index.php" class="button checkout wc-forward">Checkout</a>
           </p>
         <?php } ?>
       </div>
@@ -1639,12 +1543,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     media="all" />
 
   <script
-    src="../wp-content/plugins/contact-form-7/includes/swv/js/index37ad.js?ver=6.0.1"
-    id="swv-js"></script>
-  <script
-    src="../wp-content/plugins/contact-form-7/includes/js/index37ad.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
-  <script
     src="../wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18"
     defer
     async
@@ -1654,9 +1552,7 @@ $address = select_one_shipping_userID_controller($customer_id);
     defer
     async
     id="revmin-js"></script>
-  <script
-    src="../wp-includes/js/api-request.mind1c0.js?ver=6.7.2"
-    id="wp-api-request-js"></script>
+
   <script
     src="../wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0"
     id="wp-polyfill-js"></script>
@@ -1706,24 +1602,16 @@ $address = select_one_shipping_userID_controller($customer_id);
   <script
     src="../wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
-  <script
-    src="../wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
-    id="woosq-frontend-js"></script>
+
   <script
     src="../wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
     id="sourcebuster-js-js"></script>
-  <script
-    src="../wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
-    id="wc-order-attribution-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/tooltipster.bundle3601.js?ver=2.2.0"
     id="tooltipster-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
@@ -1743,9 +1631,6 @@ $address = select_one_shipping_userID_controller($customer_id);
     src="../wp-includes/js/jquery/ui/mouse.minb37e.js?ver=1.13.3"
     id="jquery-ui-mouse-js"></script>
   <script
-    src="../wp-includes/js/jquery/ui/slider.minb37e.js?ver=1.13.3"
-    id="jquery-ui-slider-js"></script>
-  <script
     src="../wp-content/plugins/woocommerce/assets/js/jquery-ui-touch-punch/jquery-ui-touch-punch.min0c46.js?ver=9.5.1"
     id="wc-jquery-ui-touchpunch-js"></script>
   <script
@@ -1760,16 +1645,10 @@ $address = select_one_shipping_userID_controller($customer_id);
   <script
     src="../wp-content/plugins/elementor/assets/js/frontend-modules.min42e3.js?ver=3.26.0"
     id="elementor-frontend-modules-js"></script>
-
-  <script
-    src="../wp-content/plugins/elementor/assets/js/frontend.min42e3.js?ver=3.26.0"
-    id="elementor-frontend-js"></script>
   <script
     src="../wp-content/themes/bookory/assets/js/elementor-frontend3601.js?ver=2.2.0"
     id="bookory-elementor-frontend-js"></script>
-  <script
-    src="../wp-content/themes/bookory/assets/js/vendor/jquery.sticky3601.js?ver=2.2.0"
-    id="elementor-sticky-js"></script>
+
   <script
     src="../wp-content/themes/bookory/assets/js/vendor/sticky3601.js?ver=2.2.0"
     id="bookory-elementor-sticky-js"></script>

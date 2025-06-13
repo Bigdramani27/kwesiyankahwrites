@@ -17,7 +17,6 @@ $total = total_amount_controller($customer_id);
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link rel="profile" href="http://gmpg.org/xfn/11" />
   <title>Prof Kwesi Yankah Book Store</title>
   <link
     rel="stylesheet"
@@ -183,11 +182,7 @@ $total = total_amount_controller($customer_id);
     id="woosq-feather-css"
     href="wp-content/plugins/woo-smart-quick-view/assets/libs/feather/featherd1c0.css?ver=6.7.2"
     media="all" />
-  <link
-    rel="stylesheet"
-    id="woosq-frontend-css"
-    href="wp-content/plugins/woo-smart-quick-view/assets/css/frontendeda1.css?ver=4.1.4"
-    media="all" />
+
 
   <link
     rel="stylesheet"
@@ -2573,9 +2568,6 @@ $total = total_amount_controller($customer_id);
     });
   </script>
   <script
-    src="wp-content/plugins/contact-form-7/includes/js/index37ad.js?ver=6.0.1"
-    id="contact-form-7-js"></script>
-  <script
     src="wp-content/plugins/revslider/sr6/assets/js/rbtools.minefd5.js?ver=6.7.18"
     defer
     async
@@ -2610,9 +2602,6 @@ $total = total_amount_controller($customer_id);
     src="wp-content/plugins/woo-smart-wishlist/assets/libs/perfect-scrollbar/js/perfect-scrollbar.jquery.min1845.js?ver=4.9.6"
     id="perfect-scrollbar-js"></script>
   <script
-    src="wp-content/plugins/woo-smart-wishlist/assets/js/frontend1845.js?ver=4.9.6"
-    id="woosw-frontend-js"></script>
-  <script
     src="wp-content/themes/bookory/assets/js/frontend/main3601.js?ver=2.2.0"
     id="bookory-theme-js"></script>
   <script
@@ -2641,20 +2630,11 @@ $total = total_amount_controller($customer_id);
     src="wp-content/themes/bookory/assets/js/vendor/jquery.magnific-popup.min3601.js?ver=2.2.0"
     id="magnific-popup-js"></script>
   <script
-    src="wp-content/plugins/woo-smart-quick-view/assets/js/frontendeda1.js?ver=4.1.4"
-    id="woosq-frontend-js"></script>
-  <script
     src="wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min0c46.js?ver=9.5.1"
     id="sourcebuster-js-js"></script>
   <script
-    src="wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min0c46.js?ver=9.5.1"
-    id="wc-order-attribution-js"></script>
-  <script
     src="wp-content/themes/bookory/assets/js/woocommerce/header-cart.min3601.js?ver=2.2.0"
     id="bookory-header-cart-js"></script>
-  <script
-    src="wp-content/themes/bookory/assets/js/woocommerce/product-ajax-search.min3601.js?ver=2.2.0"
-    id="bookory-products-ajax-search-js"></script>
   <script
     src="wp-content/themes/bookory/assets/js/woocommerce/main.min3601.js?ver=2.2.0"
     id="bookory-products-js"></script>
